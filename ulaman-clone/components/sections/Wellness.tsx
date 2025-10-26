@@ -1,24 +1,19 @@
 // components/sections/Wellness.tsx
 'use client'
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useScrollAnimation, scrollAnimationPresets } from '@/hooks/useScrollAnimation'
 
 const Wellness = () => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  })
-
-  // Transform values untuk animasi
-  const leftX = useTransform(scrollYProgress, [0.1, 0.3], [0, -370])
-  const rightX = useTransform(scrollYProgress, [0.1, 0.3], [0, 370])
-  const leftRotate = useTransform(scrollYProgress, [0.1, 0.7], [0, -28])
-  const rightRotate = useTransform(scrollYProgress, [0.1, 0.7], [0, 28])
-  const textOpacity = useTransform(scrollYProgress, [0.2, 0.6], [0, 20])
-  const textScale = useTransform(scrollYProgress, [0.2, 0.6], [0.9, 1])
+  const {
+    containerRef,
+    leftX,
+    rightX,
+    leftRotate,
+    rightRotate,
+    opacity,
+    scale
+  } = useScrollAnimation(scrollAnimationPresets.splitImages)
 
   return (
     <section
@@ -27,11 +22,7 @@ const Wellness = () => {
     >
       {/* Sticky Container */}
       <div className="sticky top-0 h-screen flex items-center justify-center">
-
-        {/* Container untuk kedua gambar dan teks */}
         <div className="relative w-full h-full max-w-7xl mx-auto px-4 flex items-center justify-center">
-
-          {/* Gambar Kiri - Woman with coconut (Top Layer) */}
           <motion.div
             className="absolute w-[150px] h-[250px] sm:w-[170px] sm:h-[270px] md:w-[250px] md:h-[350px] lg:w-[280px] lg:h-[380px] z-20"
             style={{
@@ -39,8 +30,8 @@ const Wellness = () => {
               rotate: leftRotate,
               left: '50%',
               top: '50%',
-              translateX: '-52%', // Hampir di tengah, sedikit ke kanan
-              translateY: '-49%'  // Hampir di tengah, sedikit ke atas
+              translateX: '-52%',
+              translateY: '-49%'
             }}
           >
             <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden">
@@ -54,7 +45,6 @@ const Wellness = () => {
             </div>
           </motion.div>
 
-          {/* Gambar Kanan - Woman with towel (Bottom Layer) */}
           <motion.div
             className="absolute w-[150px] h-[250px] sm:w-[170px] sm:h-[270px] md:w-[250px] md:h-[350px] lg:w-[280px] lg:h-[380px] z-10"
             style={{
@@ -62,8 +52,8 @@ const Wellness = () => {
               rotate: rightRotate,
               left: '50%',
               top: '50%',
-              translateX: '-52%', // Hampir di tengah, sedikit ke kiri
-              translateY: '-49%'  // Hampir di tengah, sedikit ke bawah
+              translateX: '-52%',
+              translateY: '-49%'
             }}
           >
             <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden">
@@ -77,12 +67,11 @@ const Wellness = () => {
             </div>
           </motion.div>
 
-          {/* Teks di tengah */}
           <motion.div
             className="relative z-30 max-w-lg mx-auto px-6 text-center"
             style={{
-              opacity: textOpacity,
-              scale: textScale
+              opacity: opacity,
+              scale: scale
             }}
           >
             <h2 className="text-[25px] sm:text-[30px] md:text-[40px] font-basis text-[#c9a961] mb-6 leading-tight">
