@@ -64,15 +64,13 @@ const Discover = () => {
   const selectedLoc = locations.find(loc => loc.id === selectedLocation)
 
   return (
-    <section className="relative min-h-screen bg-[#F5F1E8] py-16 overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-600 to-transparent"></div>
-
+    <section className="relative min-h-screen bg-[#E8E3D8] py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-serif text-amber-700 mb-4">
+          <h2 className="text-4xl md:text-5xl font-americana text-[#C69C4D] mb-4">
             Discover Ulaman<br />From Above
           </h2>
-          <div className="flex items-center gap-2 text-amber-600">
+          <div className="flex items-center gap-2 text-[#C69C4D]">
             <div className="w-3 h-3 bg-amber-600 rounded-full animate-pulse"></div>
             <span className="text-sm font-medium">Tap on an icon</span>
           </div>
