@@ -1,0 +1,311 @@
+{
+  "locations": [
+    {
+      "id": 1,
+      "name": "Main Pool",
+      "icon": "🏊",
+      "top": "35%",
+      "left": "25%",
+      "category": "Facilities",
+      "description": "Infinity pool with jungle views",
+      "fullDescription": "Immerse yourself in our stunning infinity pool that seamlessly blends with the lush jungle landscape. Perfect for relaxation and enjoying breathtaking sunset views.",
+      "image": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&h=600&fit=crop",
+      "features": [
+        "Infinity edge design",
+        "Panoramic jungle views",
+        "Sun loungers",
+        "Pool bar service"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Restaurant",
+      "icon": "🍽️",
+      "top": "40%",
+      "left": "35%",
+      "category": "Dining",
+      "description": "Farm-to-table dining experience",
+      "fullDescription": "Savor exquisite farm-to-table cuisine crafted from organic ingredients sourced from our own gardens and local farmers. A culinary journey celebrating Balinese flavors.",
+      "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop",
+      "features": [
+        "Organic ingredients",
+        "Balinese cuisine",
+        "Open-air dining",
+        "Chef's tasting menu"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Spa",
+      "icon": "💆",
+      "top": "28%",
+      "left": "45%",
+      "category": "Wellness",
+      "description": "Luxury wellness treatments",
+      "fullDescription": "Rejuvenate your body and mind with our holistic spa treatments. Experience traditional Balinese healing therapies in a serene jungle setting.",
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      "features": [
+        "Traditional Balinese massage",
+        "Aromatherapy",
+        "Herbal treatments",
+        "Private treatment rooms"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Yoga Pavilion",
+      "icon": "🧘",
+      "top": "45%",
+      "left": "50%",
+      "category": "Wellness",
+      "description": "Morning yoga sessions",
+      "fullDescription": "Start your day with sunrise yoga in our open-air pavilion surrounded by nature. Daily sessions guided by experienced instructors for all levels.",
+      "image": "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&h=600&fit=crop",
+      "features": [
+        "Daily yoga classes",
+        "Meditation sessions",
+        "Breathwork workshops",
+        "Jungle views"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Floating Lake Villa",
+      "icon": "🏠",
+      "top": "25%",
+      "left": "15%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "A luxurious floating villa on Ulaman's bio-filtered lake. Experience unparalleled privacy and connection with nature.",
+      "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
+      "features": [
+        "Private pool",
+        "Lake access",
+        "King-size bed",
+        "Outdoor bathtub"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Cocoon Jungle Villa",
+      "icon": "🏠",
+      "top": "30%",
+      "left": "20%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Indulge in an unparalleled blend of exotic elegance and coziness. Nestled in the jungle canopy for ultimate privacy.",
+      "image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=600&fit=crop",
+      "features": [
+        "Jungle views",
+        "Private terrace",
+        "Luxury amenities",
+        "Butler service"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Avatar Tree House",
+      "icon": "🏠",
+      "top": "22%",
+      "left": "28%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Experience luxury in an avant-garde design with breathtaking 180° views of the jungle and valley.",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
+      "features": [
+        "180° panoramic views",
+        "Tree-top design",
+        "Glass walls",
+        "Infinity bathtub"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "River Stone Villa",
+      "icon": "🏠",
+      "top": "25%",
+      "left": "35%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Unique villa featuring natural stone elements and riverside location. Perfect blend of nature and luxury.",
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
+      "features": [
+        "Riverside location",
+        "Stone architecture",
+        "Private sauna",
+        "Outdoor shower"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Reception",
+      "icon": "ℹ️",
+      "top": "32%",
+      "left": "55%",
+      "category": "Services",
+      "description": "Main reception area",
+      "fullDescription": "Our welcoming reception area where your journey begins. Our dedicated team is available 24/7 to assist with all your needs.",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
+      "features": [
+        "24/7 concierge",
+        "Tour bookings",
+        "Transportation",
+        "Multilingual staff"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Tropical Garden",
+      "icon": "🌿",
+      "top": "50%",
+      "left": "40%",
+      "category": "Nature",
+      "description": "Tropical gardens",
+      "fullDescription": "Wander through our meticulously maintained tropical gardens featuring exotic flora and peaceful meditation spots.",
+      "image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=600&fit=crop",
+      "features": [
+        "Exotic plants",
+        "Walking paths",
+        "Bird watching",
+        "Photography spots"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Jungle Cafe",
+      "icon": "☕",
+      "top": "15%",
+      "left": "50%",
+      "category": "Dining",
+      "description": "Coffee and light bites",
+      "fullDescription": "Enjoy artisan coffee and healthy snacks in our cozy cafe surrounded by jungle greenery. Perfect spot for morning breaks.",
+      "image": "https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?w=800&h=600&fit=crop",
+      "features": [
+        "Specialty coffee",
+        "Fresh pastries",
+        "Smoothie bowls",
+        "Vegan options"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Library Lounge",
+      "icon": "📚",
+      "top": "18%",
+      "left": "65%",
+      "category": "Leisure",
+      "description": "Reading lounge",
+      "fullDescription": "A quiet sanctuary for book lovers. Browse our collection of wellness, travel, and fiction books in a peaceful setting.",
+      "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&h=600&fit=crop",
+      "features": [
+        "Curated book collection",
+        "Reading nooks",
+        "Tea service",
+        "Quiet atmosphere"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Gym",
+      "icon": "💪",
+      "top": "12%",
+      "left": "60%",
+      "category": "Facilities",
+      "description": "Fitness center",
+      "fullDescription": "Stay active amidst natural beauty in our Gym, featuring panoramic views through clear glass panels. With state-of-the-art fitness equipment, enjoy limitless workout options that seamlessly blend exercise and nature, ensuring an invigorating and rejuvenating stay.",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop",
+      "features": [
+        "Panoramic glass panels",
+        "State-of-the-art equipment",
+        "Cardio machines",
+        "Free weights",
+        "Jungle views"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Garden Villa",
+      "icon": "🏠",
+      "top": "55%",
+      "left": "60%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Spacious villa surrounded by lush tropical gardens. Perfect for families or groups seeking privacy and comfort.",
+      "image": "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&h=600&fit=crop",
+      "features": [
+        "Garden setting",
+        "Multiple bedrooms",
+        "Living area",
+        "Private kitchen"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Valley View Villa",
+      "icon": "🏠",
+      "top": "65%",
+      "left": "65%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Perched on the hillside with stunning valley views. Wake up to the sounds of nature and panoramic vistas.",
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      "features": [
+        "Valley views",
+        "Sunset terrace",
+        "Outdoor dining",
+        "Plunge pool"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Cliffside Villa",
+      "icon": "🏠",
+      "top": "75%",
+      "left": "70%",
+      "category": "Accommodation",
+      "description": "Private luxury villa",
+      "fullDescription": "Dramatic cliffside location offering unparalleled views. The ultimate retreat for those seeking extraordinary experiences.",
+      "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
+      "features": [
+        "Cliffside position",
+        "Infinity pool",
+        "Floor-to-ceiling windows",
+        "Sunrise views"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Main Entrance",
+      "icon": "🚪",
+      "top": "85%",
+      "left": "75%",
+      "category": "Services",
+      "description": "Main entrance",
+      "fullDescription": "Your gateway to paradise. Our impressive entrance sets the tone for your transformative journey at Ulaman.",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
+      "features": [
+        "Grand entrance",
+        "Welcome ceremony",
+        "Valet parking",
+        "Security"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Tennis Court",
+      "icon": "🎾",
+      "top": "60%",
+      "left": "30%",
+      "category": "Facilities",
+      "description": "Tennis facilities",
+      "fullDescription": "Professional tennis court surrounded by tropical beauty. Equipment and coaching available upon request.",
+      "image": "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=800&h=600&fit=crop",
+      "features": [
+        "Professional court",
+        "Equipment rental",
+        "Coaching available",
+        "Floodlights"
+      ]
+    }
+  ]
+}
