@@ -1,0 +1,84 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Sarah Johnson",
+      "location": "United States",
+      "rating": 5,
+      "comment": "Absolutely magical experience! The bamboo villas are stunning and the commitment to sustainability is genuine. We felt completely immersed in nature while enjoying luxury amenities. The staff went above and beyond to make our stay unforgettable.",
+      "date": "September 2024",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": "Michael Chen",
+      "location": "Singapore",
+      "rating": 5,
+      "comment": "The perfect retreat for those seeking peace and tranquility. The staff went above and beyond to make our honeymoon unforgettable. The organic food was incredible and the yoga sessions at sunrise were transformative. Highly recommend!",
+      "date": "August 2024",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Emma Williams",
+      "location": "Australia",
+      "rating": 5,
+      "comment": "As an eco-conscious traveler, this place exceeded all expectations. The architecture is breathtaking and the location offers stunning views. Every detail shows care for the environment. Will definitely return with friends!",
+      "date": "July 2024",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": "James Anderson",
+      "location": "United Kingdom",
+      "rating": 5,
+      "comment": "Best hotel experience in Bali. The yoga sessions at sunrise, the spa treatments, and the attention to detail made this a truly memorable stay. The farm-to-table restaurant exceeded our expectations. A hidden gem!",
+      "date": "June 2024",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "name": "Sophie Martinez",
+      "location": "Spain",
+      "rating": 5,
+      "comment": "The most unique and beautiful resort we have ever stayed at. The integration with nature is incredible. Every detail shows the care and thought put into this place. The waterfall excursion was a highlight of our trip!",
+      "date": "May 2024",
+      "avatar": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "name": "David Kim",
+      "location": "South Korea",
+      "rating": 5,
+      "comment": "Ulaman is a paradise for nature lovers and those seeking authentic Balinese culture. The cooking class was fantastic and the temple tour was enlightening. The bamboo architecture is truly inspiring. Can't wait to come back!",
+      "date": "April 2024",
+      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "name": "Lisa Thompson",
+      "location": "Canada",
+      "rating": 5,
+      "comment": "Our family vacation was perfect here. The kids loved the jungle trekking and swimming in natural pools. The Valley Villa was spacious and beautifully designed. The staff treated us like family. Unforgettable experience!",
+      "date": "March 2024",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "name": "Marco Rossi",
+      "location": "Italy",
+      "rating": 5,
+      "comment": "Exceptional in every way. The attention to sustainability without compromising on luxury is remarkable. The spa treatments were world-class and the meditation sessions helped me find inner peace. A truly special place.",
+      "date": "February 2024",
+      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop",
+      "featured": false
+    }
+  ]
+}
