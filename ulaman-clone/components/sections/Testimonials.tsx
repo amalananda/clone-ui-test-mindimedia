@@ -61,7 +61,7 @@ const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-50 to-stone-100">
+    <section className="py-20 bg-[#E8E3D8]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-amber-600 text-sm tracking-widest uppercase mb-4">Guest Stories</p>
