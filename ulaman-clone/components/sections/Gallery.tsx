@@ -1,7 +1,7 @@
 // components/sections/Gallery.tsx
 'use client'
 import React, { useState, useCallback } from 'react'
-import Image from 'next/image' // ✅ Import Image
+import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
 
 // 1. add interface for GalleryImage
