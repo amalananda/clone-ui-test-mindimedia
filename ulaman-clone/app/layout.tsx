@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ulaman Eco Luxury Resort | Bali",
     description: "Experience unparalleled eco-luxury in the heart of Bali's pristine jungle",
-    url: "https://ulamanbali.com",
+    // url: "http://localhost:3000",
     siteName: "Ulaman Bali",
     images: [
       {
