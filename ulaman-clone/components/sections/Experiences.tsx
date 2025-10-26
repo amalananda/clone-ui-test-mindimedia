@@ -52,15 +52,16 @@ const Experiences = () => {
   }
 
   return (
-    <section id="experiences" className="py-20 bg-stone-100 text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
+    <section id="experiences" className="py-20  bg-[#E8E3D8] text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Konten Atas: Judul & Panah Navigasi */}
         <div className="flex flex-col items-center text-center mb-10 lg:mb-16">
 
           {/* Judul Section (Selalu Terpusat) */}
-          <h2 className="text-4xl md:text-5xl font-americana text-stone-900 leading-tight max-w-2xl">
-            Our Unique Experiences
+          <h2 className="text-3xl md:text-4xl font-americana text-[#C69C4D] leading-tight max-w-2xl">
+            Discover cozy elegance, where tranquility <br />
+            meets Bali’s serene beauty.
           </h2>
         </div>
 
@@ -106,7 +107,7 @@ const Experiences = () => {
                 <div
                   key={exp.id}
                   // LEBAR KARTU DIUBAH DARI VW KE PX KAKU
-                  className="flex-none snap-start group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-500
+                  className="flex-none snap-start group relative overflow-hidden rounded-lg transition-all duration-500
                w-[420px] sm:w-[420px] lg:w-[450px] xl:w-[480px]
                max-w-[480px]"
                 >
@@ -124,11 +125,15 @@ const Experiences = () => {
                   </div>
 
                   {/* Konten Teks (Tidak Berubah) */}
-                  <div className="p-6 bg-white">
-                    <h3 className="text-2xl font-americana text-stone-900 mb-2">{exp.title}</h3>
-                    <p className="font-basis text-stone-600 mb-4">{exp.subtitle}</p>
-                    <a href={exp.link} className="inline-block text-amber-600 hover:text-amber-800 font-medium text-sm border-b border-amber-600 hover:border-amber-800 transition-colors">
+                  <div className="p-6 bg-[#E8E3D8]">
+                    <h3 className="text-2xl font-americana text-[#C69C4D] mb-2">{exp.title}</h3>
+                    <p className="font-americana text-stone-600 mb-4">{exp.subtitle}</p>
+                    <a href={exp.link} className="inline-block text-[#C69C4D] font-medium text-sm relative group/link overflow-hidden">
                       DISCOVER
+                      {/* Garis dasar yang selalu ada */}
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#C69C4D] group-hover/link:opacity-0 transition-opacity duration-0 delay-700"></span>
+                      {/* Garis putih yang bergerak saat hover untuk efek "menghapus" */}
+                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#E8E3D8] translate-x-[-100%] group-hover/link:translate-x-[0%] transition-transform duration-500 ease-in-out"></span>
                     </a>
                   </div>
                 </div>
