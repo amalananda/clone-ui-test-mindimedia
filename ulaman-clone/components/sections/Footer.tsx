@@ -1,7 +1,6 @@
 // components/sections/Footer.tsx
 'use client'
 import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Youtube, Send } from 'lucide-react'
 
 const Footer = () => {
   const [formData, setFormData] = useState({ name: '', email: '' })

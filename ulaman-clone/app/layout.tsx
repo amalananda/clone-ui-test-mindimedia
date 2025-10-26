@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import "./globals.css"
@@ -35,7 +34,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ulaman Eco Luxury Resort | Bali",
     description: "Experience unparalleled eco-luxury in the heart of Bali's pristine jungle",
-    // url: "http://localhost:3000",
     siteName: "Ulaman Bali",
     images: [
       {
@@ -81,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${americana.variable} ${basisGrotesque.variable} font-sans antialiased`}
       >
         {children}
       </body>
