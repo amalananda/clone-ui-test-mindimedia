@@ -1,7 +1,7 @@
 // components/sections/Testimonials.tsx
 'use client'
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image' // ✅ Import Image untuk optimasi
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 
 // 1. Define Testimonial interface
