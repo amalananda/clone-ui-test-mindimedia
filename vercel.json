@@ -1,6 +1,15 @@
 {
-  "rootDirectory": "ulaman-clone",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm install"
+  "version": 2,
+  "builds": [
+    {
+      "src": "ulaman-clone/next.config.ts",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ulaman-clone/$1"
+    }
+  ]
 }
