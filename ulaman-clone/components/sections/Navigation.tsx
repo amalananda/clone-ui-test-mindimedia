@@ -79,7 +79,7 @@ const LocationMap = () => {
               Tucked Within Majestic<br />Balinese Nature.
             </h2>
             <p className="text-white/80 text-lg leading-relaxed">
-              Strategically located near popular areas like Canggu and Ubud, experience tranquil nature and luxury. With endless activities, you'll never want to leave Ulaman.
+              Strategically located near popular areas like Canggu and Ubud, experience tranquil nature and luxury. With endless activities, you&apos;ll never want to leave Ulaman.
             </p>
           </div>
 
