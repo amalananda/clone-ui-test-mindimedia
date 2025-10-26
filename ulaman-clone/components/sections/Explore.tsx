@@ -33,7 +33,7 @@ const Explore = () => {
         >
           <p className="text-[#c9a961] text-base md:text-lg leading-relaxed max-w-3xl mx-auto font-light mb-2">
             A world-class gastronomic journey where<br />
-            nature's finest ingredients meet culinary<br />
+            nature&apos;s finest ingredients meet culinary<br />
             craftsmanship.
           </p>
           <a
