@@ -1,0 +1,6 @@
+{
+  "rootDirectory": "ulaman-clone",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install"
+}
