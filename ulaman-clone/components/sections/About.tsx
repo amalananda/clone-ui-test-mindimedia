@@ -4,8 +4,9 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Award, Leaf, Users, Heart, Sparkles, TreePine } from 'lucide-react'
 import TextReveal from '@/components/animations/TextReveal'
+import Image from 'next/image'
 
-// custom hook to detect if screen is desktop size
+// Custom Hook untuk Mendeteksi Ukuran Layar (Desktop: > 1024px)
 const useIsDesktop = (minWidth: number = 1024) => {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -49,27 +50,27 @@ const About = () => {
   }, [isVisible])
 
 
-  // logic for text reveal based on scroll position
+  // --- LOGIKA UTAMA: Hitung Ratio Reveal Progresif ---
   const revealRatio = useMemo(() => {
     if (!textContainerRef.current) return 0
 
     const { top, height } = textContainerRef.current.getBoundingClientRect()
     const windowHeight = window.innerHeight
 
-    // set offsets based on device type
+    // Tentukan zona scroll di mana reveal akan terjadi
     let startOffset, endOffset
 
     if (isDesktop) {
-      // value for Desktop (Your Initial Value)
+      // Nilai Desktop (Contoh: area scroll lebih besar/lebih cepat)
       startOffset = windowHeight * 0.69
       endOffset = -windowHeight * 0.02
     } else {
-      // value for Mobile (Your Adjusted Value)
+      // Nilai Mobile (Nilai Awal Anda)
       startOffset = windowHeight * 0.59
       endOffset = -windowHeight * 0.02
     }
     const scrollDistance = height + startOffset - endOffset
-    let ratio = 1 - (top - endOffset) / scrollDistance
+    const ratio = 1 - (top - endOffset) / scrollDistance
     return Math.min(1, Math.max(0, ratio))
   }, [scrollY])
   // ---------------------------------------------------
@@ -89,18 +90,19 @@ const About = () => {
   const textRevealProps = isDesktop
     ? {
       text: mainTextDesktop,
-      // STYLING DESKTOP: 2.5rem (text-[2.5rem])
+      // ✅ STYLING DESKTOP: 2.5rem (text-[2.5rem])
       className: "font-americana text-[2.5rem] leading-[1.25] font-normal",
-      // color check: light (Start), dark (End)
-      startColor: "#C69C4D",
-      endColor: "rgba(198, 156, 77, 0.3)",
+      // ✅ PASTIKAN WARNA KEMBALI BENAR: Pudar (Start), Pekat (End)
+      startColor: "#C69C4D", // Pudar (Awal)
+      endColor: "rgba(198, 156, 77, 0.3)", // Pekat (Target)
     }
     : {
       text: mainTextMobile,
       // ✅ STYLING MOBILE: 1.875rem (text-[1.875rem])
       className: "font-americana text-[1.875rem] leading-[1.25] font-normal",
-      startColor: "#C69C4D",
-      endColor: "rgba(198, 156, 77, 0.3)",
+      // ✅ PASTIKAN WARNA KEMBALI BENAR: Pudar (Start), Pekat (End)
+      startColor: "#C69C4D", // Pudar (Awal)
+      endColor: "rgba(198, 156, 77, 0.3)", // Pekat (Target)
     }
   const titleText =
     "An award-winning eco-luxury resort |BREAK|" +
@@ -201,42 +203,61 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative bg-gradient-to-b from-stone-950 to-stone-900 text-white overflow-hidden"
+      className="relative bg-[#e8e1d8] from-stone-950 to-stone-900 text-white overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         {/* Section Header */}
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-24">
+          {/* Left Content (di sini tidak ada konten kiri, hanya teks besar yang berada di tengah) */}
           <div
-            className="lg:col-span-2 flex justify-center"
+            className="lg:col-span-2 flex justify-center" // ✅ Membuat div ini spanning 2 kolom dan pusat horizontal
             style={{
               animation: isVisible ? 'fadeInLeft 1s ease-out 0.3s both' : 'none'
             }}
           >
+            {/* ✅ Bungkus TextReveal dalam div baru untuk membatasi lebar (max-w-4xl)
+              dan membuatnya terpusat (mx-auto, text-center)
+            */}
             <div ref={textContainerRef} className="max-w-4xl mx-auto text-center">
+
+              {/* ✅ Gunakan <TextReveal> dengan styling besar dan font Playfair Display */}
               <TextReveal
+                // Gunakan teks yang sesuai dengan kondisi saat ini
                 {...textRevealProps}
                 as="h1"
                 revealRatio={revealRatio}
               />
+              {/* Catatan: Tombol dihapus karena tampilan ini fokus pada teks besar yang terpusat */}
             </div>
           </div>
+
+          {/* Right Image Gallery (dipindah ke bawah, atau dihapus jika layoutnya harus seperti gambar)
+             Karena Anda ingin seperti gambar, kita akan menyesuaikan agar grid-nya tidak mengganggu teks besar.
+             Jika Anda ingin gambar dan statistik tetap ada, atur ulang grid di bawah ini.
+          */}
         </div>
 
-        {/* IMAGE SLIDER & ABOUT SECTION */}
+        {/* 2. 🔑 IMAGE SLIDER & ABOUT SECTION (Menggantikan galeri/gambar lama) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24 lg:mb-32 pt-8">
 
           {/* LEFT: IMAGE SLIDER */}
           <div className="relative aspect-[3/4] overflow-hidden rounded-xl shadow-2xl">
-            <img
+            {/* Gambar Saat Ini */}
+            <Image
               key={currentImageIndex}
               src={activeSlide.src}
               alt={activeSlide.alt}
+              fill
               // Menggunakan style inline untuk transisi opacity sederhana
               className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
             />
+
+            {/* Overlay dan Tombol Navigasi */}
             <div className="absolute inset-0 bg-black/10 flex justify-between items-end p-6 md:p-8">
+
+              {/* Dots Navigation */}
               <div className="flex space-x-2">
                 {sliderData.map((_, index) => (
                   <button
@@ -248,7 +269,8 @@ const About = () => {
                   />
                 ))}
               </div>
-              {/* Previous and Next Buttons */}
+
+              {/* Previous and Next Buttons (Diletakkan di kanan bawah seperti gambar) */}
               <div className="flex space-x-4">
                 {/* Previous Button */}
                 <button
@@ -258,6 +280,7 @@ const About = () => {
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 </button>
+
                 {/* Next Button */}
                 <button
                   onClick={nextImage}
@@ -276,10 +299,13 @@ const About = () => {
             <div
               key={currentImageIndex + '-title'}
               className="font-americana text-[1.35rem] lg:text-[1.625rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out"
+            // Catatan: Saya menggunakan text-amber-600 sebagai perkiraan untuk #C69C4D
+            // Jika ingin persis, Anda perlu mendefinisikan warna kustom Tailwind untuk #C69C4D atau menggunakan arbitrary value.
             >
               {activeSlide.title.split('|BREAK|').map((segment, index, array) => (
                 <React.Fragment key={index}>
                   {segment}
+                  {/* Tambahkan <br /> hanya jika bukan segmen terakhir */}
                   {index < array.length - 1 && <br />}
                 </React.Fragment>
               ))}
@@ -290,6 +316,7 @@ const About = () => {
               {activeSlide.title.split('|BREAK|').map((segment, index, array) => (
                 <React.Fragment key={index}>
                   {segment}
+                  {/* Tambahkan <br /> hanya jika bukan segmen terakhir */}
                   {index < array.length - 1 && <br />}
                 </React.Fragment>
               ))}
@@ -297,17 +324,20 @@ const About = () => {
 
             {/* Button About Us */}
             <a
-              href="#about"
-              className="mt-10 inline-block px-6 py-3 border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-stone-900 transition-all duration-300"
+              href="/about"
+              className="mt-10 inline-block text-americana text-[#C69C4D]"
             >
               ABOUT US
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#C69C4D] group-hover/link:opacity-0 transition-opacity duration-0 delay-700"></span>
+              {/* Garis putih yang bergerak saat hover untuk efek "menghapus" */}
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#E8E3D8] translate-x-[-100%] group-hover/link:translate-x-[0%] transition-transform duration-500 ease-in-out"></span>
             </a>
           </div>
         </div>
         {/* --- AKHIR IMAGE SLIDER & ABOUT SECTION --- */}
       </div>
 
-      <style>{`
+      <style jsx>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
