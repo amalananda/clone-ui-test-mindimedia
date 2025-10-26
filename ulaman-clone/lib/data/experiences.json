@@ -1,0 +1,128 @@
+{
+  "experiences": [
+    {
+      "id": "yoga-sessions",
+      "slug": "yoga-sessions",
+      "name": "Daily Yoga Sessions",
+      "category": "wellness",
+      "description": "Start your day with rejuvenating yoga practice overlooking the jungle",
+      "longDescription": "Join our expert instructors for daily yoga sessions in our open-air pavilion. Whether you're a beginner or experienced practitioner, our classes are designed to harmonize body, mind, and spirit while surrounded by the sounds of nature. Morning and evening sessions available.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
+      "duration": "60 minutes",
+      "schedule": [
+        "7:00 AM",
+        "5:00 PM"
+      ],
+      "included": true,
+      "bookingRequired": false
+    },
+    {
+      "id": "spa-treatments",
+      "slug": "spa-treatments",
+      "name": "Traditional Balinese Spa",
+      "category": "wellness",
+      "description": "Indulge in authentic Balinese healing treatments",
+      "longDescription": "Our spa offers traditional Balinese massage and healing treatments using organic, locally-sourced ingredients. Experience ancient wellness techniques passed down through generations, performed by skilled therapists in a serene jungle setting.",
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=600&fit=crop",
+      "duration": "90-120 minutes",
+      "pricing": {
+        "perNight": 75,
+        "currency": "USD"
+      },
+      "bookingRequired": true,
+      "included": false
+    },
+    {
+      "id": "jungle-trekking",
+      "slug": "jungle-trekking",
+      "name": "Guided Jungle Trekking",
+      "category": "adventure",
+      "description": "Explore the pristine jungle with our expert guides",
+      "longDescription": "Embark on a guided trek through the surrounding jungle to discover hidden waterfalls, exotic wildlife, and ancient trees. Our knowledgeable guides share insights about the local ecosystem and medicinal plants. Available in various difficulty levels.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      "duration": "2-4 hours",
+      "pricing": {
+        "perNight": 50,
+        "currency": "USD"
+      },
+      "bookingRequired": true,
+      "included": false
+    },
+    {
+      "id": "farm-to-table",
+      "slug": "farm-to-table",
+      "name": "Farm to Table Dining",
+      "category": "dining",
+      "description": "Savor organic cuisine from our sustainable gardens",
+      "longDescription": "Experience the ultimate farm-to-table dining at our restaurant, where ingredients are harvested daily from our organic gardens. Our chef creates innovative dishes that celebrate local flavors and sustainable practices. Vegetarian and vegan options available.",
+      "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+      "duration": "All day",
+      "included": true,
+      "bookingRequired": false
+    },
+    {
+      "id": "cooking-class",
+      "slug": "cooking-class",
+      "name": "Balinese Cooking Class",
+      "category": "culture",
+      "description": "Learn to prepare authentic Balinese dishes",
+      "longDescription": "Join our chef for an immersive cooking class where you'll learn to prepare traditional Balinese dishes using organic ingredients from our garden. Start with a market tour, then cook and enjoy your creations in our outdoor kitchen pavilion.",
+      "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
+      "duration": "4 hours",
+      "pricing": {
+        "perNight": 65,
+        "currency": "USD"
+      },
+      "bookingRequired": true,
+      "included": false
+    },
+    {
+      "id": "temple-tour",
+      "slug": "temple-tour",
+      "name": "Sacred Temple Visit",
+      "category": "culture",
+      "description": "Discover Bali's spiritual heritage",
+      "longDescription": "Visit ancient Balinese temples with our guide and learn about the island's rich spiritual traditions. Experience a traditional blessing ceremony and witness daily rituals. Includes transportation and traditional sarong.",
+      "image": "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&h=600&fit=crop",
+      "duration": "Half day",
+      "pricing": {
+        "perNight": 85,
+        "currency": "USD"
+      },
+      "bookingRequired": true,
+      "included": false
+    },
+    {
+      "id": "meditation",
+      "slug": "meditation",
+      "name": "Guided Meditation",
+      "category": "wellness",
+      "description": "Find inner peace through mindfulness practice",
+      "longDescription": "Experience deep relaxation and mental clarity through guided meditation sessions. Held in our peaceful meditation pavilion surrounded by nature, these sessions incorporate breathing techniques and mindfulness practices suitable for all levels.",
+      "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=600&fit=crop",
+      "duration": "45 minutes",
+      "schedule": [
+        "6:30 AM",
+        "6:00 PM"
+      ],
+      "included": true,
+      "bookingRequired": false
+    },
+    {
+      "id": "waterfall-excursion",
+      "slug": "waterfall-excursion",
+      "name": "Waterfall Excursion",
+      "category": "adventure",
+      "description": "Journey to hidden waterfalls and natural pools",
+      "longDescription": "Trek through rice terraces and jungle paths to discover stunning hidden waterfalls. Swim in crystal-clear natural pools and enjoy a picnic lunch surrounded by nature. Transportation, guide, and lunch included.",
+      "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=600&fit=crop",
+      "duration": "Full day",
+      "pricing": {
+        "perNight": 95,
+        "currency": "USD"
+      },
+      "bookingRequired": true,
+      "included": false
+    }
+  ]
+}
