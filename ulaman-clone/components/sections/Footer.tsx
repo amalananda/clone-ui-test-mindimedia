@@ -59,7 +59,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#7A8B7F] text-white font-americana">
-      <div className="max-w-7xl mx-auto pt-16 pb-8">
+      <div className="max-w-7xl mx-auto pt-2 pb-8">
 
         {/* Coloumn Link & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-12">
@@ -169,15 +169,20 @@ const Footer = () => {
 
         {/* Awards Section */}
         <div className="mb-12 overflow-hidden">
-          <div className="flex items-center justify-between gap-6 py-8">
-            {awards.map((award, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 bg-white/10 backdrop-blur-sm px-6 py-4 rounded flex items-center justify-center"
-                style={{ minWidth: '140px', height: '80px' }}
-              >
-                <span className="text-white/60 text-xs text-center">{award.logo}</span>
-              </div>
+          <div className="flex animate-scroll-infinite whitespace-nowrap">
+            {/* Duplicate awards 3x untuk seamless infinite loop */}
+            {[...Array(3)].map((_, groupIndex) => (
+              <React.Fragment key={groupIndex}>
+                {awards.map((award, index) => (
+                  <div
+                    key={`${groupIndex}-${index}`}
+                    className="flex-shrink-0 bg-white/10 backdrop-blur-sm px-6 py-4 rounded flex items-center justify-center mx-3"
+                    style={{ minWidth: '140px', height: '80px' }}
+                  >
+                    <span className="text-white/60 text-xs text-center">{award.logo}</span>
+                  </div>
+                ))}
+              </React.Fragment>
             ))}
           </div>
         </div>
