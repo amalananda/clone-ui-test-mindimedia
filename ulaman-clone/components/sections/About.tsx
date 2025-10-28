@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client'
 
-import React, { useState, useEffect, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import TextReveal from '@/components/animations/TextReveal'
 import Image from 'next/image'
 
-// custom hook to detect if screen is desktop size
 const useIsDesktop = (minWidth: number = 1024) => {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -22,8 +21,9 @@ const useIsDesktop = (minWidth: number = 1024) => {
 }
 
 const About = () => {
-  const [scrollY, setScrollY] = useState(0)
+  const [, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [revealRatio, setRevealRatio] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
   const textContainerRef = useRef<HTMLDivElement>(null)
   const isDesktop = useIsDesktop(1024)
@@ -40,41 +40,36 @@ const About = () => {
           setIsVisible(true)
         }
       }
+
+      // ✅ PERBAIKAN UTAMA: Hitung revealRatio di dalam useEffect
+      if (textContainerRef.current) {
+        const { top, height } = textContainerRef.current.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+
+        let startOffset, endOffset
+
+        if (isDesktop) {
+          startOffset = windowHeight * 0.69
+          endOffset = -windowHeight * 0.02
+        } else {
+          startOffset = windowHeight * 0.59
+          endOffset = -windowHeight * 0.02
+        }
+
+        const scrollDistance = height + startOffset - endOffset
+        const ratio = 1 - (top - endOffset) / scrollDistance
+        const newRatio = Math.min(1, Math.max(0, ratio))
+
+        setRevealRatio(newRatio)
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isVisible])
+  }, [isVisible, isDesktop])
 
-  // ✅ FIX: Hapus useMemo dan hitung langsung dalam render
-  // Atau gunakan useEffect untuk update state
-  const getRevealRatio = () => {
-    if (!textContainerRef.current) return 0
-
-    const { top, height } = textContainerRef.current.getBoundingClientRect()
-    const windowHeight = window.innerHeight
-
-    let startOffset, endOffset
-
-    if (isDesktop) {
-      startOffset = windowHeight * 0.69
-      endOffset = -windowHeight * 0.02
-    } else {
-      startOffset = windowHeight * 0.59
-      endOffset = -windowHeight * 0.02
-    }
-
-    const scrollDistance = height + startOffset - endOffset
-    const ratio = 1 - (top - endOffset) / scrollDistance
-    return Math.min(1, Math.max(0, ratio))
-  }
-
-  // ✅ Hitung revealRatio langsung, tanpa useMemo
-  const revealRatio = getRevealRatio()
-
-  // ---------------------------------------------------
   const mainTextMobile =
     "Nestled among the rice |BREAK|" +
     "fields and coconut trees |BREAK|" +
@@ -118,7 +113,7 @@ const About = () => {
     "ecological footprint. Recharge your mind, body, and |BREAK|" +
     "soul in this unique holistic retreat."
 
-  const sliderData = useMemo(() => ([
+  const sliderData = [
     {
       src: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=1000&fit=crop&q=80',
       alt: 'Ulaman Eco Resort Exterior View',
@@ -137,7 +132,7 @@ const About = () => {
       title: titleText,
       body: bodyText
     }
-  ]), [titleText, bodyText])
+  ]
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderData.length)
@@ -156,7 +151,6 @@ const About = () => {
       className="relative bg-[#E8E3D8] from-stone-950 to-stone-900 text-white overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-24">
           <div
             className="lg:col-span-2 flex justify-center"
@@ -174,10 +168,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* IMAGE SLIDER & ABOUT SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24 lg:mb-32 pt-8">
-
-          {/* LEFT: IMAGE SLIDER */}
           <div className="relative aspect-[3/4] overflow-hidden rounded-xl shadow-2xl">
             <Image
               key={currentImageIndex}
@@ -221,7 +212,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* RIGHT: TEXT CONTENT */}
           <div className="pt-4 lg:pt-35 ml-12">
             <div
               key={currentImageIndex + '-title'}
