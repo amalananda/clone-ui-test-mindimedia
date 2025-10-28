@@ -1,4 +1,3 @@
-// components/animations/TextReveal.tsx
 'use client'
 
 import React from 'react'
@@ -7,8 +6,8 @@ interface TextRevealProps {
   text: string
   className?: string
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'div' | 'span'
-  startColor: string // Warna Pudar (rgba(..., 0.3))
-  endColor: string   // Warna Pekat (#C69C4D)
+  startColor: string
+  endColor: string
   revealRatio: number
 }
 
@@ -22,9 +21,9 @@ const TextReveal: React.FC<TextRevealProps> = ({
 }) => {
   const LINE_BREAK_DELIMITER = '|BREAK|'
 
-  // ... (Logika pembagian tokens dan perhitungan ratioPerWord tetap sama) ...
   const lines = text.split(LINE_BREAK_DELIMITER)
   let allTokens: (string | typeof LINE_BREAK_DELIMITER)[] = []
+
   lines.forEach((line, index) => {
     const wordsInLine = line.trim().split(/\s+/).filter(w => w.length > 0)
     allTokens = allTokens.concat(wordsInLine)
@@ -39,9 +38,8 @@ const TextReveal: React.FC<TextRevealProps> = ({
   let wordCounter = 0
 
   const finalContent = allTokens.flatMap((token, index) => {
-
     if (token === LINE_BREAK_DELIMITER) {
-      return <div key={`break-${index}`} className="block h-0 w-full" style={{ margin: '0.2em 0' }} />
+      return <br key={`break-${index}`} />
     }
 
     const wordIndex = wordCounter
@@ -60,51 +58,28 @@ const TextReveal: React.FC<TextRevealProps> = ({
       }
     }
 
-    // --- LOGIKA BARU: DUA LAPISAN TEKS SEDERHANA ---
-
-    // Lapisan 1: Teks Penuh (Pekat) di belakang
-    const fullWord = (
-      <span style={{ color: endColor, position: 'absolute', top: 0, left: 0 }}>
-        {token}
-      </span>
-    )
-
-    // Lapisan 2: Teks Awal (Pudar) di depan
-    const clippedWord = (
-      <span
-        style={{
-          color: startColor,
-          // Menggunakan clipPath untuk menutupi bagian kiri teks (yang sudah di-reveal)
-          clipPath: `inset(0 ${100 - wordClipPercentage}% 0 0)`
-        }}
-      >
-        {token}
-      </span>
-    )
-
+    // ✅ PERBAIKAN: Gunakan linear-gradient yang lebih simple dan reliable
+    const gradientStyle = {
+      backgroundImage: `linear-gradient(to right, ${startColor} ${wordClipPercentage}%, ${endColor} ${wordClipPercentage}%)`,
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      display: 'inline-block',
+      marginRight: '0.5em'
+    }
 
     return (
       <span
         key={`word-${index}`}
-        className="inline-block relative" // Penting: Tambahkan relative pada container kata
-        style={{ marginRight: '0.5em', whiteSpace: 'nowrap' }}
+        style={gradientStyle}
       >
-        {fullWord}
-        {clippedWord}
+        {token}
       </span>
     )
   })
 
-  // Style akhir teks diatur di sini
-  const style: React.CSSProperties = {
-    color: startColor, // Teks secara keseluruhan default ke pudar
-  }
-
   return (
-    <Component
-      className={`${className} overflow-hidden`}
-      style={style as React.CSSProperties}
-    >
+    <Component className={className}>
       {finalContent}
     </Component>
   )
