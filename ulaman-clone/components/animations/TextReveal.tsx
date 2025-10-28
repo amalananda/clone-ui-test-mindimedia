@@ -57,8 +57,6 @@ const TextReveal: React.FC<TextRevealProps> = ({
         wordClipPercentage = Math.min(100, Math.max(0, progressInWord * 100))
       }
     }
-
-    // ✅ PERBAIKAN: Gunakan linear-gradient yang lebih simple dan reliable
     const gradientStyle = {
       backgroundImage: `linear-gradient(to right, ${startColor} ${wordClipPercentage}%, ${endColor} ${wordClipPercentage}%)`,
       WebkitBackgroundClip: 'text',
