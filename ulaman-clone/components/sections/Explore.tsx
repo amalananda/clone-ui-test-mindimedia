@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import UnderlineLink from '../ui/UnderlineLink'
 
 const Explore = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -36,12 +37,7 @@ const Explore = () => {
             nature&apos;s finest ingredients meet culinary<br />
             craftsmanship.
           </p>
-          <a
-            href="#restaurant"
-            className="inline-block mt-4 text-[#c9a961] hover:text-[#b8975a] text-sm font-medium tracking-wider border-b border-[#c9a961] hover:border-[#b8975a] transition-colors uppercase"
-          >
-            Visit the Website
-          </a>
+          <UnderlineLink href="#discover" className="mt-5 md:text-xs lg:text-xs">VISIT THE WEBSITE</UnderlineLink>
         </motion.div>
 
         {/* Image Grid with Clip Path Effect */}
