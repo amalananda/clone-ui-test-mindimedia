@@ -7,6 +7,17 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useScrollAnimation, scrollAnimationPresets } from '@/hooks/useScrollAnimation'
 import Footer from "@/components/sections/Footer"
 import LocationMap from '@/components/sections/Navigation'
+import SplitImageReveal from '@/components/animations/SplitImageReveal'
+import GridImages from '@/components/ui/GridImages'
+import galleryData from '@/lib/data/gallery-images.json'
+
+interface GalleryImage {
+  id: number
+  url: string
+  title: string
+  size: 'small' | 'medium' | 'tall' | 'extra-tall' | 'super-tall'
+  alternateImages?: string[]
+}
 
 export default function AboutPage() {
   // State for team slider
@@ -52,7 +63,7 @@ export default function AboutPage() {
       ]
     }
   ]
-
+  const aboutGalleryImages = galleryData['aboutGalleryImages'] as GalleryImage[] || []
 
   const nextTeamSlide = () => {
     setCurrentTeamSlide((prev) => (prev + 1) % teamSlides.length)
@@ -64,12 +75,6 @@ export default function AboutPage() {
 
   const {
     containerRef,
-    leftX,
-    rightX,
-    leftRotate,
-    rightRotate,
-    opacity,
-    scale
   } = useScrollAnimation(scrollAnimationPresets.splitImages)
 
   return (
@@ -94,72 +99,28 @@ export default function AboutPage() {
         ref={containerRef}
         className="relative min-h-[100vh] bg-[#e8e1d8] overflow-hidden"
       >
-        <div className="sticky top-0 h-screen flex items-center justify-center">
-          <div className="relative w-full h-full max-w-7xl mx-auto px-4 flex items-center justify-center">
-            <motion.div
-              className="absolute w-[150px] h-[250px] sm:w-[170px] sm:h-[270px] md:w-[250px] md:h-[350px] lg:w-[280px] lg:h-[380px] z-20"
-              style={{
-                x: leftX,
-                rotate: leftRotate,
-                left: '50%',
-                top: '50%',
-                translateX: '-52%',
-                translateY: '-49%'
-              }}
-            >
-              <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop"
-                  alt="Wellness experience"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="absolute w-[150px] h-[250px] sm:w-[170px] sm:h-[270px] md:w-[250px] md:h-[350px] lg:w-[280px] lg:h-[380px] z-10"
-              style={{
-                x: rightX,
-                rotate: rightRotate,
-                left: '50%',
-                top: '50%',
-                translateX: '-52%',
-                translateY: '-49%'
-              }}
-            >
-              <div className="relative w-full h-full shadow-2xl rounded-lg overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=800&fit=crop"
-                  alt="Spa treatment"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="relative z-30 max-w-lg mx-auto px-6 text-center"
-              style={{
-                opacity: opacity,
-                scale: scale
-              }}
-            >
-
-              <p className="text-[25px] sm:text-[30px] md:text-[25px] font-basis text-[#c9a961] mb-6 leading-tight items-center"
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                Our mission is to create a self-<br />
-                sustainable community rooted in <br />
-                compassion, empowering our <br />
-                employees and guests to <br />embrace authenticity and reach<br />
-                their full potential.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+        <SplitImageReveal
+          leftImage={{
+            src: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop',
+            alt: 'Wellness experience'
+          }}
+          rightImage={{
+            src: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=800&fit=crop',
+            alt: 'Spa treatment'
+          }}
+        >
+          <p
+            className="text-[25px] sm:text-[30px] md:text-[25px] font-basis text-[#c9a961] mb-6 leading-tight"
+            style={{ whiteSpace: 'pre-line' }}
+          >
+            Our mission is to create a self-<br />
+            sustainable community rooted in <br />
+            compassion, empowering our <br />
+            employees and guests to <br />
+            embrace authenticity and reach<br />
+            their full potential.
+          </p>
+        </SplitImageReveal>
       </section>
 
       {/* Eco-Friendly Section */}
@@ -421,8 +382,32 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section id="gallery" className="py-12 md:py-24 bg-[#E8E3D8]">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-americana text-[#c9a961] mb-4">Gallery</h2>
+            <p className="text-[#c9a961] text-sm md:text-base">The Journey of Ulaman</p>
+          </div>
+
+          <GridImages
+            images={aboutGalleryImages}
+            autoRotate={true}
+            rotateInterval={3000}
+            columns={{
+              mobile: 2,
+              tablet: 3,
+              desktop: 3
+            }}
+            columnWidth={347.44}
+            gap={16}
+            showLightbox={true}
+          />
+        </div>
+      </section>
+
       {/* Awards Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white/50">
+      <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
