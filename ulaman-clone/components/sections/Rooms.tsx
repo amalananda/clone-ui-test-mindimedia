@@ -5,6 +5,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import UnderlineLink from '@/components/ui/UnderlineLink'
 
 const SINGLE_HERO_IMAGE =
   'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&h=1000&fit=crop&q=80'
@@ -161,9 +162,7 @@ const HeroWithPackages = () => {
                     <h3 className="text-2xl md:text-3xl font-americana mb-4">
                       {pkg.name}
                     </h3>
-                    <button className="text-amber-400 hover:text-amber-300 transition-colors text-sm tracking-wider uppercase font-medium border-b border-amber-400 pb-1 font-basis">
-                      DISCOVER
-                    </button>
+                    <UnderlineLink href="#discover" className="mt-5">DISCOVER</UnderlineLink>
                   </div>
                 </div>
               </div>
