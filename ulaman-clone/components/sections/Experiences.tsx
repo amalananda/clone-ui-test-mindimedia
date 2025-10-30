@@ -1,8 +1,8 @@
-// components/sections/Experiences.tsx
 'use client'
 import Image from 'next/image'
-import { ArrowLeft, ArrowRight } from 'lucide-react' // ✅ Import ArrowLeft, ArrowRight
-import React, { useRef } from 'react' // ✅ Import useRef
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import React, { useRef } from 'react'
+import UnderlineLink from '@/components/ui/UnderlineLink'
 
 const Experiences = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null) // Ref untuk container scroll
@@ -52,7 +52,7 @@ const Experiences = () => {
   }
 
   return (
-    <section id="experiences" className="py-20  bg-[#E8E3D8] text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
+    <section id="experiences" className="py-15  bg-[#E8E3D8] text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Konten Atas: Judul & Panah Navigasi */}
@@ -92,10 +92,8 @@ const Experiences = () => {
             </button>
           </div>
 
-          {/* KANAN (Kolom Carousel): Mengambil sisa ruang */}
+          {/* RIGHT (Carousel Column): Takes up the remaining space */}
           <div
-            // ❌ overflow-x DIHAPUS karena tidak valid.
-            // w-full dipertahankan agar mengambil sisa ruang.
             className="w-full"
           >
             <div
@@ -128,13 +126,8 @@ const Experiences = () => {
                   <div className="p-6 bg-[#E8E3D8]">
                     <h3 className="text-2xl font-americana text-[#C69C4D] mb-2">{exp.title}</h3>
                     <p className="font-americana text-stone-600 mb-4">{exp.subtitle}</p>
-                    <a href={exp.link} className="inline-block text-[#C69C4D] font-medium text-sm relative group/link overflow-hidden">
-                      DISCOVER
-                      {/* Garis dasar yang selalu ada */}
-                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#C69C4D] group-hover/link:opacity-0 transition-opacity duration-0 delay-700"></span>
-                      {/* Garis putih yang bergerak saat hover untuk efek "menghapus" */}
-                      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#E8E3D8] translate-x-[-100%] group-hover/link:translate-x-[0%] transition-transform duration-500 ease-in-out"></span>
-                    </a>
+                    <UnderlineLink href="#discover" className="mt-5">DISCOVER</UnderlineLink>
+
                   </div>
                 </div>
               ))}
