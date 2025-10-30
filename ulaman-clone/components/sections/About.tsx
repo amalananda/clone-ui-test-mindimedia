@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import TextReveal from '@/components/animations/TextReveal'
 import Image from 'next/image'
-
+import UnderlineLink from '../ui/UnderlineLink'
 const useIsDesktop = (minWidth: number = 1024) => {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -234,12 +234,8 @@ const About = () => {
               ))}
             </p>
 
-            <a
-              href="#about"
-              className="mt-10 inline-block px-6 py-3 border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-stone-900 transition-all duration-300"
-            >
-              ABOUT US
-            </a>
+            <UnderlineLink href="/about" className="mt-5">ABOUT US</UnderlineLink>
+
           </div>
         </div>
       </div>

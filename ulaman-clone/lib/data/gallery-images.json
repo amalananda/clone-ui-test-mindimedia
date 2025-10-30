@@ -1,0 +1,183 @@
+{
+  "home": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=800&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=800&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=800&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=800&fit=crop&q=80"
+      ],
+      "title": "Ulaman Romantic Dinner",
+      "size": "tall"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&h=400&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&h=400&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop&q=80"
+      ],
+      "title": "Bathtub Flower Decorations",
+      "size": "small"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&h=800&fit=crop&q=80"
+      ],
+      "title": "'Melukat' Water Blessing Ceremony",
+      "size": "tall"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop&q=80"
+      ],
+      "title": "Organic Breakfast",
+      "size": "medium"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=400&fit=crop&q=80"
+      ],
+      "title": "Wedding Ceremony",
+      "size": "extra-tall"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop&q=80",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=800&fit=crop&q=80"
+      ],
+      "title": "Ulaman Architecture",
+      "size": "medium"
+    }
+  ],
+  "about": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=600&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=400&h=600&fit=crop"
+      ],
+      "title": "Finding the Land - 2018",
+      "size": "tall"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=800&fit=crop"
+      ],
+      "title": "The Build - 2020",
+      "size": "large"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=800&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=800&fit=crop"
+      ],
+      "title": "Ulaman Today - 2024",
+      "size": "large"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
+      "title": "Our Team",
+      "size": "medium"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop",
+      "title": "Ulaman Family",
+      "size": "medium"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop",
+      "title": "Bamboo Architecture",
+      "size": "large"
+    }
+  ],
+  "wellness": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=800&fit=crop",
+      "title": "Spa Treatment",
+      "size": "large"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=800&fit=crop",
+      "title": "Yoga Session",
+      "size": "tall"
+    }
+  ],
+  "aboutGalleryImages": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=600&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=400&h=600&fit=crop"
+      ],
+      "title": "Finding the Land - 2018",
+      "size": "tall",
+      "height": 180
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=800&fit=crop",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=800&fit=crop"
+      ],
+      "title": "The Build - 2020",
+      "size": "small",
+      "height": 180
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=800&fit=crop",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=800&fit=crop"
+      ],
+      "title": "Ulaman Today - 2024",
+      "size": "tall",
+      "height": 260
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
+      "title": "Our Team",
+      "size": "medium",
+      "height": 260
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop",
+      "title": "Ulaman Family",
+      "size": "extra-tall",
+      "height": 380
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=800&fit=crop",
+      "title": "Bamboo Architecture",
+      "size": "medium",
+      "height": 260
+    }
+  ]
+}
