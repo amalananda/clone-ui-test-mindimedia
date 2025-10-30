@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import "./globals.css"
+import PageTransition from "@/components/animations/PageTransition"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -81,7 +82,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${americana.variable} ${basisGrotesque.variable} font-sans antialiased`}
       >
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   )
