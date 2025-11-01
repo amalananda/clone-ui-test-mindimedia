@@ -38,7 +38,7 @@ export default function SplitImageReveal({
   return (
     <section
       ref={containerRef}
-      className={`relative ${minHeight} bg-[#e8e1d8] overflow-hidden`}
+      className={`relative ${minHeight} bg-[#EFEBE2] overflow-hidden`}
     >
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div className="relative w-full h-full max-w-7xl mx-auto px-4 flex items-center justify-center">
