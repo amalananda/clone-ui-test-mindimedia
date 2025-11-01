@@ -27,6 +27,8 @@ pnpm dev
 bun dev
 ```
 
+The application will be accessible at http://localhost:3000.
+
 # Front End Implementation
 
 ## 1. Component Structure
