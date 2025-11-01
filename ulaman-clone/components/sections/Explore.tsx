@@ -24,7 +24,7 @@ const Explore = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-[#e8e1d8]"
+      className="relative bg-[#EFEBE2]]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

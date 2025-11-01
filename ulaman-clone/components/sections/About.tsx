@@ -1,4 +1,4 @@
-
+// components/sections/About.tsx
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -148,7 +148,7 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative bg-[#E8E3D8] from-stone-950 to-stone-900 text-white overflow-hidden"
+      className="relative bg-[#EFEBE2] from-stone-950 to-stone-900 text-white overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-24">

@@ -203,7 +203,7 @@ const Footer = () => {
       </div>
 
       {/* 2. RUNNING TEXT (FULL WIDTH) */}
-      <div className="mt-8 overflow-hidden bg-[#E5DCC9] py-3 w-full">
+      <div className="mt-8 overflow-hidden bg-[#EFEBE2] py-3 w-full">
         <div className="flex animate-scroll-infinite whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex">
@@ -214,7 +214,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-infinite {
           0% {
             transform: translateX(0);

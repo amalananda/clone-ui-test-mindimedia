@@ -1,3 +1,4 @@
+// components/sections/Experiences.tsx
 'use client'
 import Image from 'next/image'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -5,44 +6,36 @@ import React, { useRef } from 'react'
 import UnderlineLink from '@/components/ui/UnderlineLink'
 
 const Experiences = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null) // Ref untuk container scroll
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const experiences = [
     {
       id: 1,
-      // Hapus icon, description, dan features karena tidak ada di desain baru
       title: 'Floating Lake',
-      subtitle: 'A luxurious floating villa on Ulaman’s bio-filtered lake.', // ✅ Tambah subtitle
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=1000&fit=crop', // ✅ Ganti image
-      link: '#' // Tambahkan link
+      subtitle: 'A luxurious floating villa on Ulaman’s bio-filtered lake.',
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=1000&fit=crop',
+      link: '/rooms/floating-lake'
     },
     {
       id: 2,
       title: 'Cocoon Jungle',
       subtitle: 'Indulge in an unparalleled blend of exotic elegance and coziness.',
-      image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=1000&fit=crop', // ✅ Ganti image
-      link: '#'
+      image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=1000&fit=crop',
+      link: '/rooms/cocoon-jungle'
     },
     {
       id: 3,
       title: 'Avatar Tree House',
       subtitle: 'Experience luxury in an avant-garde design with breathtaking 180° views.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=1000&fit=crop', // ✅ Ganti image
-      link: '#'
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=1000&fit=crop',
+      link: '/rooms/avatar-tree-house'
     },
-    {
-      id: 4,
-      title: 'River Stone Sauna',
-      subtitle: 'Relax and detoxify in our unique sauna, nestled by the river.',
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=1000&fit=crop',
-      link: '#'
-    }
   ]
 
   // 🔑 LOGIKA SCROLL NAVIGASI
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 450 // Sesuaikan jumlah scroll per klik
+      const scrollAmount = 450
       if (direction === 'left') {
         scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
       } else {
@@ -52,7 +45,7 @@ const Experiences = () => {
   }
 
   return (
-    <section id="experiences" className="py-15  bg-[#E8E3D8] text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
+    <section id="experiences" className="py-15  bg-[#EFEBE2] text-stone-800 overflow-hidden"> {/* ✅ Ubah background dan warna teks */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Konten Atas: Judul & Panah Navigasi */}
@@ -66,7 +59,7 @@ const Experiences = () => {
         </div>
 
 
-        {/* ✅ Tombol Navigasi Slider */}
+        {/* Tombol Navigasi Slider */}
         <div className="flex flex-col lg:gap-[10rem] lg:flex-row items-center">
 
           {/* KIRI (Kolom Navigasi): Tombol & Space di Desktop */}
@@ -126,8 +119,7 @@ const Experiences = () => {
                   <div className="p-6 bg-[#E8E3D8]">
                     <h3 className="text-2xl font-americana text-[#C69C4D] mb-2">{exp.title}</h3>
                     <p className="font-americana text-stone-600 mb-4">{exp.subtitle}</p>
-                    <UnderlineLink href="#discover" className="mt-5">DISCOVER</UnderlineLink>
-
+                    <UnderlineLink href={exp.link} className="mt-5">DISCOVER</UnderlineLink>
                   </div>
                 </div>
               ))}

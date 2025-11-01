@@ -64,7 +64,7 @@ const Discover = () => {
   const selectedLoc = locations.find(loc => loc.id === selectedLocation)
 
   return (
-    <section className="relative min-h-screen bg-[#E8E3D8] py-16 overflow-hidden">
+    <section className="relative min-h-screen bg-[#EFEBE2] py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-8">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-americana text-[#C69C4D] mb-4">
@@ -77,7 +77,7 @@ const Discover = () => {
         </div>
 
         <div className="relative w-full" style={{ paddingBottom: '65%' }}>
-          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 rounded-2xl overflow-hidden">
             <svg viewBox="0 0 1600 1000" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
               <defs>
                 <linearGradient id="groundGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -221,7 +221,7 @@ const Discover = () => {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
