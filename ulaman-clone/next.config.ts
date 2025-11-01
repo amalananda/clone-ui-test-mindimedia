@@ -1,8 +1,9 @@
 // next.config.ts
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'images.prismic.io'],
+    domains: ['images.unsplash.com', 'images.prismic.io', 'images.remotePatterns'],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -15,4 +16,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default nextConfig
