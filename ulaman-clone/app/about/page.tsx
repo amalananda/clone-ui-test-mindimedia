@@ -10,6 +10,10 @@ import LocationMap from '@/components/sections/Navigation'
 import SplitImageReveal from '@/components/animations/SplitImageReveal'
 import GridImages from '@/components/ui/GridImages'
 import galleryData from '@/lib/data/gallery-images.json'
+import Hero from '@/components/sections/Hero'
+import CTA from '@/components/sections/CallToAction'
+import Awards from '@/components/about_sections/Awards'
+import OurValues from '@/components/about_sections/OurValues'
 
 interface GalleryImage {
   id: number
@@ -79,25 +83,15 @@ export default function AboutPage() {
 
   return (
 
-    <main className="bg-[#e8e1d8]">
+    <main className="bg-[#EFEBE2] overflow-x-hidden">
 
-      {/* Hero Section - Bamboo Tunnel */}
-      <section className="relative h-screen">
-        <Image
-          src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
-          alt="Ulaman Bamboo Architecture"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20"></div>
-      </section>
+      {/* Hero Section */}
+      <Hero heroImage="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop" />
 
       {/* Mission Section - 2 Images with Text */}
       <section
         ref={containerRef}
-        className="relative min-h-[100vh] bg-[#e8e1d8] overflow-hidden"
+        className="relative min-h-[100vh] bg-[#EFEBE2] overflow-hidden"
       >
         <SplitImageReveal
           leftImage={{
@@ -216,49 +210,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values Section - Full Width Image Background */}
-      <section className="relative min-h-screen flex items-center justify-center py-24">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=1080&fit=crop"
-            alt="Nature background"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif text-white text-center mb-16">Our values</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-lg">
-              <h3 className="text-2xl font-serif text-[#c9a961] mb-4">Balance and Harmony</h3>
-              <p className="text-stone-700 text-sm leading-relaxed">
-                At Ulaman, we believe in the Balinese philosophy and principles of &apos;Tri Hita Karana&apos; integrating <em>balance and harmony with nature.</em> Surrounded by the sounds of water, jungle and tranquil rice terraces encourages personal growth in harmony with Mother nature&apos;s rhythms.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-lg">
-              <h3 className="text-2xl font-serif text-[#c9a961] mb-4">People are Our Priority</h3>
-              <p className="text-stone-700 text-sm leading-relaxed">
-                We are dedicated to creating a community rooted in compassion and family values, promoting eco-friendly practices and empowerment. This commitment cultivates authenticity and potential among all team members, ensuring our guests <em>feel valued, well cared for, and part of the Ulaman family.</em>
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-lg">
-              <h3 className="text-2xl font-serif text-[#c9a961] mb-4">Self-sustainable Community</h3>
-              <p className="text-stone-700 text-sm leading-relaxed">
-                Ulaman embodies a self-sustainable community rooted in compassion and authenticity. We prioritize operational excellence, honesty, integrity, and dedication, <em>empowering individuals to heal and embody their best selves effortlessly.</em>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <OurValues />
 
       {/* Timeline Section - Story */}
       <section ref={timelineContainerRef} className="relative py-24 px-4 sm:px-6 lg:px-8">
@@ -338,9 +290,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Continue similar pattern for other timeline items... */}
-          {/* I'll add a few more key ones */}
-
           {/* 2020 - The Build */}
           <div ref={timeline3Ref} className="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="grid grid-cols-2 gap-4">
@@ -383,7 +332,7 @@ export default function AboutPage() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-12 md:py-24 bg-[#E8E3D8]">
+      <section id="gallery" className="py-12 md:py-24 bg-[#EFEBE2]">
         <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-5xl font-americana text-[#c9a961] mb-4">Gallery</h2>
@@ -407,38 +356,7 @@ export default function AboutPage() {
       </section>
 
       {/* Awards Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif text-[#c9a961] mb-12">Awards &<br />recognitions</h2>
-            </div>
-
-            <div className="space-y-6">
-              {[
-                { award: 'Winner of World Luxury Spa Awards', org: 'Riverside Spa by Ulaman', year: '2024' },
-                { award: 'Winner of Sustainable Hotel of the Year', org: 'Ahead Asia', year: '2023' },
-                { award: 'Winner Lodges, Cabins, and Tented Camps', org: 'Ahead Asia', year: '2023' },
-                { award: 'TripAdvisor Travelers Choice Award', org: '', year: '2021 - 2023 - 2024' },
-                { award: 'Winner Architecture | Sustainable & Green', org: 'Loop Design Award', year: '2023' },
-                { award: 'World\'s Best Hotel (Exterior - Special Mention)', org: 'Prix Versailles (Unesco)', year: '2021' },
-                { award: 'Asia Pacific Best Hotel (Exterior)', org: 'Prix Versailles (Unesco)', year: '2021' },
-                { award: 'Runner-up IDCS Design Excellence - Project of the Year', org: 'IDC Singapore', year: '2021' },
-                { award: 'Finalist for Travel / Resort (Architectural Award)', org: 'KOHLER Bold Design Awards', year: '2021' },
-                { award: 'Runner up Worlds Best Eco Resort', org: 'Destination Deluxe', year: '2020' }
-              ].map((item, index) => (
-                <div key={index} className="flex justify-between items-start border-b border-stone-300 pb-4">
-                  <div className="flex-1">
-                    <p className="text-stone-800 font-medium">{item.award}</p>
-                    {item.org && <p className="text-sm text-[#c9a961]">{item.org}</p>}
-                  </div>
-                  <p className="text-[#c9a961] text-sm whitespace-nowrap ml-4">{item.year}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Awards />
 
       {/* Team Gallery Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -498,23 +416,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-serif text-[#c9a961] mb-8 leading-tight">
-            Reconnect with yourself in<br />
-            luxurious comfort.
-          </h2>
-          <a
-            href="/book"
-            className="inline-block px-8 py-3 border-2 border-[#c9a961] text-[#c9a961] hover:bg-[#c9a961] hover:text-white transition-all text-sm font-medium tracking-wider"
-          >
-            BOOK YOUR STAY
-          </a>
-
-          <p className="mt-16 text-[#c9a961]">@ulamanbali</p>
-        </div>
-      </section>
+      <CTA
+        title="Escape the stress of modern life and join<br/>us on a journey to wellness."
+        buttonText="BOOK YOUR STAY"
+        buttonHref="#booking"
+        optionalSubtitle="@ulamanbali"
+      />
       <LocationMap />
       <Footer />
     </main>
