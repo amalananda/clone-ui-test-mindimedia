@@ -17,10 +17,11 @@ const LocationMap = () => {
   ]
 
   return (
-    <section className="relative bg-[#7A8B7F] min-h-screen pt-16">
+    <section className="relative bg-[#7A8B7F] min-h-screen pt-8 md:pt-16">
       {/* Booking Bar */}
-      <div className="max-w-7xl mx-auto px-8 mb-8">
-        <div className="flex items-center justify-center gap-8 text-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8">
+        {/* Desktop Booking Bar */}
+        <div className="hidden md:flex items-center justify-center gap-8 text-white">
           <div className="flex items-center gap-4">
             <label className="text-sm">Check In</label>
             <input
@@ -68,17 +69,67 @@ const LocationMap = () => {
             Search
           </button>
         </div>
+
+        {/* Mobile Booking Bar */}
+        <div className="md:hidden space-y-4 text-white">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label className="text-xs">Check In</label>
+              <input
+                type="date"
+                value={checkIn}
+                onChange={(e) => setCheckIn(e.target.value)}
+                className="w-full bg-transparent border-b border-white/40 px-2 py-1 text-sm focus:outline-none focus:border-white"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs">Check Out</label>
+              <input
+                type="date"
+                value={checkOut}
+                onChange={(e) => setCheckOut(e.target.value)}
+                className="w-full bg-transparent border-b border-white/40 px-2 py-1 text-sm focus:outline-none focus:border-white"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <label className="text-xs">Adult</label>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setAdults(Math.max(1, adults - 1))}
+                  className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors"
+                >
+                  <Minus size={14} />
+                </button>
+                <span className="text-sm w-8 text-center">{adults}</span>
+                <button
+                  onClick={() => setAdults(adults + 1)}
+                  className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors"
+                >
+                  <Plus size={14} />
+                </button>
+              </div>
+            </div>
+
+            <button className="px-6 py-2 border border-white/40 hover:bg-white/10 transition-colors rounded text-sm">
+              Search
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-4 md:mb-6 leading-tight">
               Tucked Within Majestic<br />Balinese Nature.
             </h2>
-            <p className="text-white/80 text-lg leading-relaxed">
+            <p className="text-white/80 text-base md:text-lg leading-relaxed">
               Strategically located near popular areas like Canggu and Ubud, experience tranquil nature and luxury. With endless activities, you&apos;ll never want to leave Ulaman.
             </p>
           </div>
@@ -129,7 +180,7 @@ const LocationMap = () => {
               {/* Ulaman Logo/Marker */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div className="text-amber-500 text-4xl font-serif tracking-wider">
-                  <svg width="60" height="60" viewBox="0 0 60 60" className="fill-current">
+                  <svg width="40" height="40" viewBox="0 0 60 60" className="fill-current md:w-[60px] md:h-[60px]">
                     <path d="M 30,15 Q 20,25 20,35 Q 20,45 30,45 Q 40,45 40,35 Q 40,25 30,15 Z M 30,20 Q 35,27 35,35 Q 35,40 30,40 Q 25,40 25,35 Q 25,27 30,20 Z" />
                     <circle cx="30" cy="35" r="3" />
                   </svg>
@@ -140,7 +191,7 @@ const LocationMap = () => {
               {locations.map((location, index) => (
                 <div
                   key={index}
-                  className="absolute"
+                  className="absolute hidden md:block"
                   style={{
                     top: location.top,
                     bottom: location.bottom,
@@ -166,7 +217,7 @@ const LocationMap = () => {
               ))}
 
               {/* Airport location with plane icon */}
-              <div className="absolute bottom-[18%] right-[12%]">
+              <div className="absolute bottom-[18%] right-[12%] hidden md:block">
                 <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg flex items-center gap-2">
                   <Plane size={14} className="text-white" />
                   <span className="text-white text-xs">15 min</span>
@@ -174,7 +225,7 @@ const LocationMap = () => {
               </div>
 
               {/* Uluwatu dropdown indicator */}
-              <div className="absolute bottom-[20%] left-[15%]">
+              <div className="absolute bottom-[20%] left-[15%] hidden md:block">
                 <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 cursor-pointer hover:bg-[#3A4B3F]/90 transition-colors">
                   <Car size={14} className="text-white" />
                   <span className="text-white text-xs">2 hours</span>
@@ -186,6 +237,23 @@ const LocationMap = () => {
                   Uluwatu Temple
                 </div>
               </div>
+            </div>
+
+            {/* Mobile Location List */}
+            <div className="md:hidden mt-6 space-y-3">
+              {locations.map((location, index) => (
+                <div key={index} className="flex items-center justify-between bg-[#5A6B5F]/50 backdrop-blur-sm px-4 py-3 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    {location.isAirport ? (
+                      <Plane size={16} className="text-white" />
+                    ) : (
+                      <Car size={16} className="text-white" />
+                    )}
+                    <span className="text-white text-sm">{location.name}</span>
+                  </div>
+                  <span className="text-white/80 text-xs">{location.distance}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

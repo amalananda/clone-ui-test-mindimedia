@@ -31,7 +31,7 @@ const Gallery = ({
   subtitle,
   // autoRotate = true,
   // rotateInterval = 3000,
-  backgroundColor = '#E8E3D8',
+  backgroundColor = '#EFEBE2',
   showTitle = false
 }: GalleryProps) => {
   const galleryImages = images || (galleryData[category] as GalleryImage[]) || []
