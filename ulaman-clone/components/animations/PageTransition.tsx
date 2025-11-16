@@ -20,6 +20,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       '/rooms/avatar-tree-house': 'Avatar Tree House',
       '/villas': 'Villas',
       '/retreats': 'Retreats',
+      '/spa': 'Spa',
     }
     setDisplayText(pathMap[pathname] || pathname.replace('/', ''))
   }, [pathname])
@@ -35,7 +36,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
           className="fixed inset-0 z-50 bg-[#E8E3D8] flex items-center justify-center"
           initial={{ opacity: 0.5 }}
           animate={{ opacity: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 2, ease: [0.22, 1, 0.36, 1] }}
           style={{ pointerEvents: 'none' }}
         >
           {/* Text dengan animasi huruf per huruf dari kiri ke kanan */}
@@ -46,8 +47,8 @@ export default function PageTransition({ children }: { children: React.ReactNode
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
-                  duration: 0.3,
-                  delay: index * 0.09, // Setiap huruf delay 80ms dari huruf sebelumnya
+                  duration: 0.1,
+                  delay: index * 0.07,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className={char === ' ' ? 'w-4 md:w-6' : ''}
@@ -62,7 +63,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.4 }}
+          transition={{ duration: 0.4, delay: 2 }}
         >
           {children}
         </motion.div>

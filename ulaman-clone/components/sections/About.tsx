@@ -3,8 +3,9 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import TextReveal from '@/components/animations/TextReveal'
-import Image from 'next/image'
-import UnderlineLink from '../ui/UnderlineLink'
+import ImageSlider from '@/components/ui/ImageSlider'
+import UnderlineLink from '@/components/ui/UnderlineLink'
+
 const useIsDesktop = (minWidth: number = 1024) => {
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -27,7 +28,6 @@ const About = () => {
   const sectionRef = useRef<HTMLElement>(null)
   const textContainerRef = useRef<HTMLDivElement>(null)
   const isDesktop = useIsDesktop(1024)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +41,6 @@ const About = () => {
         }
       }
 
-      // ✅ PERBAIKAN UTAMA: Hitung revealRatio di dalam useEffect
       if (textContainerRef.current) {
         const { top, height } = textContainerRef.current.getBoundingClientRect()
         const windowHeight = window.innerHeight
@@ -77,6 +76,7 @@ const About = () => {
     "only 20 minutes away |BREAK|" +
     "from the vibrant town of |BREAK|" +
     "Canggu."
+
   const mainTextDesktop =
     "Nestled among the rice fields and |BREAK|" +
     "coconut trees of Tabanan, Ulaman |BREAK|" +
@@ -112,8 +112,15 @@ const About = () => {
     "leave feeling renewed, all while minimizing your |BREAK|" +
     "ecological footprint. Recharge your mind, body, and |BREAK|" +
     "soul in this unique holistic retreat."
+  interface Slide {
+    [key: string]: unknown // Add index signature
+    src: string
+    alt: string
+    title: string
+    body: string
+  }
 
-  const sliderData = [
+  const sliderData: Slide[] = [
     {
       src: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=1000&fit=crop&q=80',
       alt: 'Ulaman Eco Resort Exterior View',
@@ -134,16 +141,6 @@ const About = () => {
     }
   ]
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderData.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + sliderData.length) % sliderData.length)
-  }
-
-  const activeSlide = sliderData[currentImageIndex]
-
   return (
     <section
       ref={sectionRef}
@@ -151,6 +148,7 @@ const About = () => {
       className="relative bg-[#EFEBE2] from-stone-950 to-stone-900 text-white overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        {/* Text Reveal Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-24">
           <div
             className="lg:col-span-2 flex justify-center"
@@ -168,76 +166,38 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24 lg:mb-32 pt-8">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-xl shadow-2xl">
-            <Image
-              key={currentImageIndex}
-              src={activeSlide.src}
-              alt={activeSlide.alt}
-              fill
-              className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-            />
-            <div className="absolute inset-0 bg-black/10 flex justify-between items-end p-6 md:p-8">
-              <div className="flex space-x-2">
-                {sliderData.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-amber-400 w-6' : 'bg-white/50 hover:bg-white/80'
-                      }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
+        {/* Image Slider Section */}
+        <ImageSlider
+          slides={sliderData}
+          renderContent={(slide) => (
+            <div className="ml-12">
+              {/* Title */}
+              <div className="font-americana text-[1.35rem] lg:text-[1.625rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out">
+                {(slide as unknown as Slide).title.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
+                  <React.Fragment key={index}>
+                    {segment}
+                    {index < array.length - 1 && <br />}
+                  </React.Fragment>
                 ))}
               </div>
-              <div className="flex space-x-4">
-                <button
-                  onClick={prevImage}
-                  className="p-3 bg-white/20 hover:bg-white/40 text-white rounded-full transition-colors backdrop-blur-sm"
-                  aria-label="Previous image"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                  </svg>
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="p-3 bg-white/20 hover:bg-white/40 text-white rounded-full transition-colors backdrop-blur-sm"
-                  aria-label="Next image"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-              </div>
+
+              {/* Body */}
+              <p className="mt-8 font-basis text-gray-400 text-lg leading-relaxed transition-opacity duration-500 ease-in-out">
+                {(slide as Slide).body.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
+                  <React.Fragment key={index}>
+                    {segment}
+                    {index < array.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </p>
+
+              {/* Custom Link for this page */}
+              <UnderlineLink href="/spa/day-pass" className="mt-5">
+                LEARN MORE
+              </UnderlineLink>
             </div>
-          </div>
-
-          <div className="pt-4 lg:pt-35 ml-12">
-            <div
-              key={currentImageIndex + '-title'}
-              className="font-americana text-[1.35rem] lg:text-[1.625rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out"
-            >
-              {activeSlide.title.split('|BREAK|').map((segment, index, array) => (
-                <React.Fragment key={index}>
-                  {segment}
-                  {index < array.length - 1 && <br />}
-                </React.Fragment>
-              ))}
-            </div>
-
-            <p className="mt-8 font-basis text-gray-400 text-lg leading-relaxed transition-opacity duration-500 ease-in-out">
-              {activeSlide.body.split('|BREAK|').map((segment, index, array) => (
-                <React.Fragment key={index}>
-                  {segment}
-                  {index < array.length - 1 && <br />}
-                </React.Fragment>
-              ))}
-            </p>
-
-            <UnderlineLink href="/about" className="mt-5">ABOUT US</UnderlineLink>
-
-          </div>
-        </div>
+          )}
+        />
       </div>
 
       <style>{`
