@@ -12,6 +12,7 @@ interface GridImage {
   size: 'small' | 'medium' | 'large' | 'wide' | 'tall' | 'extra-tall' | 'super-tall' | 'extra-wide' | 'jumbo' | 'banner'
   alternateImages?: string[]
   height?: number
+  mobileSize?: 'small' | 'medium' | 'large' | 'wide' | 'tall' | 'extra-tall' | 'super-tall' | 'extra-wide' | 'jumbo' | 'banner'
 }
 
 interface GridImagesProps {
@@ -48,8 +49,15 @@ const GridImages = ({
   const [columnCount, setColumnCount] = useState(columns.mobile)
   const [actualColumnWidth, setActualColumnWidth] = useState(columnWidth)
   const [zoomLevel, setZoomLevel] = useState(1)
+  const [isMounted, setIsMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
+  const currentRotatingIndexRef = useRef(0)
+
+  // Mount detection untuk menghindari hydration error
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Responsive columns and calculate actual column width
   useEffect(() => {
@@ -77,21 +85,29 @@ const GridImages = ({
     return () => window.removeEventListener('resize', updateColumns)
   }, [columns, gap, columnWidth])
 
-  // Auto rotate images
+  // Auto rotate images - ONE AT A TIME
   useEffect(() => {
     if (!autoRotate) return
 
+    const imagesWithAlternates = images.filter(
+      image => image.alternateImages && image.alternateImages.length > 1
+    )
+
+    if (imagesWithAlternates.length === 0) return
+
     const interval = setInterval(() => {
+      const imageToRotate = imagesWithAlternates[currentRotatingIndexRef.current]
+
       setCurrentImageIndexes(prev => {
-        const newIndexes = { ...prev }
-        images.forEach(image => {
-          if (image.alternateImages && image.alternateImages.length > 1) {
-            const currentIndex = prev[image.id] || 0
-            newIndexes[image.id] = (currentIndex + 1) % image.alternateImages.length
-          }
-        })
-        return newIndexes
+        const currentIndex = prev[imageToRotate.id] || 0
+        return {
+          ...prev,
+          [imageToRotate.id]: (currentIndex + 1) % (imageToRotate.alternateImages?.length || 1)
+        }
       })
+
+      // Move to next image for next rotation
+      currentRotatingIndexRef.current = (currentRotatingIndexRef.current + 1) % imagesWithAlternates.length
     }, rotateInterval)
 
     return () => clearInterval(interval)
@@ -187,9 +203,12 @@ const GridImages = ({
             }}
           >
             {column.map((image, imageIndex) => {
+              // Gunakan isMounted untuk menghindari hydration error
+              const isMobile = isMounted && window.innerWidth < 768
+              const currentSize = isMobile && image.mobileSize ? image.mobileSize : image.size
               let imageHeight = image.height || 250
 
-              switch (image.size) {
+              switch (currentSize) {
                 case 'small':
                   imageHeight = 300
                   break
