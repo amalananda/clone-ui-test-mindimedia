@@ -179,5 +179,71 @@
       "size": "medium",
       "height": 260
     }
+  ],
+  "spa": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1035",
+        "https://images.unsplash.com/photo-1542848285-4777eb2a621e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=986"
+      ],
+      "title": "Spa Treatment",
+      "size": "tall",
+      "mobileSize": "medium"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1594628284809-afbc957ba3a4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
+        "https://images.unsplash.com/photo-1491510736257-3ad769ff47b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
+      ],
+      "title": "Yoga Session",
+      "size": "small"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1603077864615-538e955d1ad1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=927",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+        "https://images.unsplash.com/photo-1598901865264-4f5f30954532?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2097"
+      ],
+      "title": "Spa Treatment",
+      "size": "tall",
+      "mobileSize": "small"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1639162906614-0603b0ae95fd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1399",
+        "https://images.unsplash.com/photo-1617182726501-1f5f7b05a68f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987"
+      ],
+      "title": "Spa Treatment",
+      "size": "medium",
+      "mobileSize": "tall"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1560932992-a93e9ca8a0c9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1611920630418-f587fdc3bf94?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
+        "https://images.unsplash.com/photo-1684248655527-46bee8e79029?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974"
+      ],
+      "title": "Spa Treatment",
+      "size": "tall"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071",
+      "alternateImages": [
+        "https://images.unsplash.com/photo-1544843776-7c98a52e08a4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987",
+        "https://images.unsplash.com/photo-1716893933701-73d59789bba7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1975"
+      ],
+      "title": "Spa Treatment",
+      "size": "medium",
+      "mobileSize": "medium"
+    }
   ]
 }
