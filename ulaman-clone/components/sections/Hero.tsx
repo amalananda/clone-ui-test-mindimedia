@@ -5,22 +5,49 @@ import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
+interface NavItem {
+  label: string
+  href: string
+}
+
+interface HeroButton {
+  label: string
+  href?: string
+  onClick?: () => void
+}
+
 interface HeroProps {
   heroImage?: string
+  leftNavItems?: NavItem[]
+  rightButton?: HeroButton
+  logoText?: string
+  logoSubtext?: string
+  showLogo?: boolean
 }
+
+const defaultLeftNavItems: NavItem[] = [
+  { label: 'Villas', href: '/villas' },
+  { label: 'Spa', href: '/spa' },
+  { label: 'Dine', href: '#dine' },
+  { label: 'Retreats', href: '/retreats' }
+]
+
+const defaultButton: HeroButton = {
+  label: 'Stay With Us',
+  href: '#booking'
+}
+
 const Hero = ({
-  heroImage = 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=1080&fit=crop&q=80'
+  heroImage = 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&h=1080&fit=crop&q=80',
+  leftNavItems = defaultLeftNavItems,
+  rightButton = defaultButton,
+  logoText = 'ULAMAN',
+  logoSubtext = 'Eco Luxury Resort',
+  showLogo = true
 }: HeroProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const router = useRouter()
-
-  const leftNavItems = [
-    { label: 'Villas', href: '/villas' },
-    { label: 'Spa', href: '#spa' },
-    { label: 'Dine', href: '#dine' },
-    { label: 'Retreats', href: '/retreats' }
-  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100)
@@ -42,13 +69,22 @@ const Hero = ({
     setIsMenuOpen(false)
   }
 
+  const handleButtonClick = () => {
+    if (rightButton.onClick) {
+      rightButton.onClick()
+    } else if (rightButton.href) {
+      scrollToSection(rightButton.href)
+    }
+    setIsMenuOpen(false)
+  }
+
   return (
     <div id="home" className="relative min-h-screen bg-[#EFEBE2] overflow-hidden">
       {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-500 ${scrolled
-          ? 'bg-[#EFEBE2] backdrop-blur-lg py-4 md:py-9'
-          : 'bg-transparent py-4 md:py-9'
+          ? 'bg-[#EFEBE2] border-b border-[#C69C4D] py-4 md:py-5'
+          : 'bg-transparent border-b border-transparent py-6 md:py-8'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,7 +108,7 @@ const Hero = ({
                     e.preventDefault()
                     scrollToSection(item.href)
                   }}
-                  className="text-[#C69C4D] transition-all duration-300 text-sm tracking-wide capitalize relative group"
+                  className="text-[#C69C4D] font-basis transition-all duration-300 text-sm tracking-wide capitalize relative group"
                   style={{
                     animation: `fadeInDown 0.6s ease-out ${index * 0.1}s both`
                   }}
@@ -84,36 +120,41 @@ const Hero = ({
             </div>
 
             {/* Center Logo */}
-            <div className="absolute left-1/2 -translate-x-1/2 text-center">
-              <div className="text-[#C69C4D] mb-1">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 40 40"
-                  fill="currentColor"
-                  className="mx-auto md:w-10 md:h-10"
-                >
-                  <path d="M20 5 L25 15 L20 25 L15 15 Z M20 15 L25 25 L20 35 L15 25 Z" />
-                  <circle cx="20" cy="20" r="2" />
-                </svg>
+            {showLogo && (
+              <div className="absolute left-1/2 -translate-x-1/2 text-center">
+                <div className="text-[#C69C4D] mb-1">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 40 40"
+                    fill="currentColor"
+                    className="mx-auto md:w-10 md:h-10"
+                  >
+                    <path d="M20 5 L25 15 L20 25 L15 15 Z M20 15 L25 25 L20 35 L15 25 Z" />
+                    <circle cx="20" cy="20" r="2" />
+                  </svg>
+                </div>
+                <h1 className="text-base md:text-lg tracking-[0.2rem] -mt-2 font-basis text-[#C69C4D]">
+                  {logoText}
+                </h1>
+                <p className="text-[9px] md:text-[11px] uppercase text-[#C69C4D] -mt-2 font-basis mt-0.5">
+                  {logoSubtext}
+                </p>
               </div>
-              <h1 className="text-base md:text-xl tracking-[0.2em] text-[#C69C4D]">
-                ULAMAN
-              </h1>
-              <p className="text-[9px] md:text-[11px] uppercase text-[#C69C4D] mt-0.5">
-                Eco Luxury Resort
-              </p>
-            </div>
+            )}
 
-            {/* Stay With Us Button - Desktop */}
-            <button
-              className="hidden lg:block px-6 py-2.5 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-300 rounded-sm"
-              style={{
-                animation: 'fadeInDown 0.6s ease-out 0.4s both'
-              }}
-            >
-              Stay With Us
-            </button>
+            {/* Right Button - Desktop */}
+            {rightButton && (
+              <button
+                onClick={handleButtonClick}
+                className="hidden lg:block px-6 py-2.5 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-300 rounded-sm"
+                style={{
+                  animation: 'fadeInDown 0.6s ease-out 0.4s both'
+                }}
+              >
+                {rightButton.label}
+              </button>
+            )}
 
             {/* Spacer for mobile (keeps logo centered) */}
             <div className="lg:hidden w-10"></div>
@@ -140,9 +181,14 @@ const Hero = ({
               ))}
 
               {/* Mobile Button */}
-              <button className="w-full px-6 py-3 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-300 rounded-sm">
-                Stay With Us
-              </button>
+              {rightButton && (
+                <button
+                  onClick={handleButtonClick}
+                  className="w-full px-6 py-3 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-300 rounded-sm"
+                >
+                  {rightButton.label}
+                </button>
+              )}
             </div>
           </div>
         </div>

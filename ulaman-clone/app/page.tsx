@@ -11,7 +11,8 @@ import Discover from '@/components/sections/Discover'
 import Wellness from '@/components/sections/Wellness'
 import Explore from '@/components/sections/Explore'
 import CTA from "@/components/sections/CallToAction"
-
+import Schedule from "@/components/sections/Schedule"
+import ParallaxTextImage from '@/components/sections/ParallaxTextImage'
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#EFEBE2] overflow-x-hidden">
@@ -20,10 +21,23 @@ export default function Home() {
       <Experiences />
       <Rooms />
       <Wellness />
+      <ParallaxTextImage
+        images={[
+          {
+            src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1600&h=1000&fit=crop&q=80",
+            alt: "Ulaman Riverside View",
+            leftText: "Balanced",
+            rightText: "Renewal"
+          }
+        ]}
+        defaultLeftText="Relaxing"
+        defaultRightText="Healing"
+      />
       <Explore />
       <Discover />
       <Testimonials showContinueReading={true} />
       <Gallery />
+      <Schedule />
       <CTA
         title="Reconnect With Yourself In<br/>Luxurious Comfort."
         buttonText="BOOK YOUR STAY"
