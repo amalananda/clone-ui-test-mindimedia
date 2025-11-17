@@ -146,7 +146,7 @@ const HeroSpa = ({
             {rightButton && (
               <button
                 onClick={handleButtonClick}
-                className="px-4 lg:px-8 py-2 lg:py-2.5 border border-[#B79F8C] text-[#B79F8C] hover:bg-[#B79F8C] hover:text-[#EFEBE2] font-basis text-sm tracking-wide capitalize transition-all duration-300 rounded-sm ml-auto"
+                className="px-4 lg:px-8 py-2 lg:py-2.5 border border-[#B79F8C] text-[#B79F8C] hover:bg-[#B79F8C] hover:text-[#EFEBE2] font-basis text-sm tracking-wide capitalize transition-all duration-300 rounded-tl-md rounded-br-md ml-auto"
                 style={{
                   animation: 'fadeInDown 0.6s ease-out 0.4s both'
                 }}
