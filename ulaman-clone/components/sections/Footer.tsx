@@ -58,14 +58,14 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#7A8B7F] text-white font-americana">
-      <div className="max-w-7xl mx-auto pt-2 pb-8">
+      <div className="max-w-7xl mx-auto pt-8 md:pt-12 pb-8 px-4 md:px-6 lg:px-8">
 
         {/* Coloumn Link & Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-8 md:mb-12">
           {/* Get Notified */}
           <div>
-            <h3 className="text-2xl font-serif mb-8">Get Notified On Our Offers</h3>
-            <div className="space-y-6">
+            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Get Notified On Our Offers</h3>
+            <div className="space-y-4 md:space-y-6">
               <div>
                 <input
                   type="text"
@@ -73,7 +73,7 @@ const Footer = () => {
                   placeholder="Your Name*"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-white/40 pb-2 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b border-white/40 pb-2 text-sm md:text-base text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <div>
@@ -83,12 +83,12 @@ const Footer = () => {
                   placeholder="Your Email*"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-white/40 pb-2 text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b border-white/40 pb-2 text-sm md:text-base text-white placeholder-white/70 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <button
                 onClick={handleSubmit}
-                className="text-white border-b border-white/40 pb-1 hover:border-white transition-colors text-sm tracking-wider"
+                className="text-white border-b border-white/40 pb-1 hover:border-white transition-colors text-xs md:text-sm tracking-wider"
               >
                 SUBMIT
               </button>
@@ -97,15 +97,15 @@ const Footer = () => {
 
           {/* Explore Links */}
           <div>
-            <h3 className="text-2xl font-serif mb-8">Explore</h3>
-            <div className="grid grid-cols-2 gap-8">
+            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Explore</h3>
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>
-                <ul className="space-y-3">
+                <ul className="space-y-2 md:space-y-3">
                   {exploreLinks.column1.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-sm"
+                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
                       >
                         {link.label}
                       </a>
@@ -114,12 +114,12 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <ul className="space-y-3">
+                <ul className="space-y-2 md:space-y-3">
                   {exploreLinks.column2.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-sm"
+                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
                       >
                         {link.label}
                       </a>
@@ -132,15 +132,15 @@ const Footer = () => {
 
           {/* Connect Links */}
           <div>
-            <h3 className="text-2xl font-serif mb-8">Connect</h3>
-            <div className="grid grid-cols-2 gap-8">
+            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Connect</h3>
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>
-                <ul className="space-y-3">
+                <ul className="space-y-2 md:space-y-3">
                   {connectLinks.column1.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-sm"
+                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
                       >
                         {link.label}
                       </a>
@@ -149,12 +149,12 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <ul className="space-y-3">
+                <ul className="space-y-2 md:space-y-3">
                   {connectLinks.column2.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-sm"
+                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
                       >
                         {link.label}
                       </a>
@@ -167,7 +167,7 @@ const Footer = () => {
         </div>
 
         {/* Awards Section */}
-        <div className="mb-12 overflow-hidden">
+        <div className="mb-8 md:mb-12 overflow-hidden">
           <div className="flex animate-scroll-infinite whitespace-nowrap">
             {/* Duplicate awards 3x untuk seamless infinite loop */}
             {[...Array(3)].map((_, groupIndex) => (
@@ -175,10 +175,10 @@ const Footer = () => {
                 {awards.map((award, index) => (
                   <div
                     key={`${groupIndex}-${index}`}
-                    className="flex-shrink-0 bg-white/10 backdrop-blur-sm px-6 py-4 rounded flex items-center justify-center mx-3"
-                    style={{ minWidth: '140px', height: '80px' }}
+                    className="flex-shrink-0 bg-white/10 backdrop-blur-sm px-4 md:px-6 py-3 md:py-4 rounded flex items-center justify-center mx-2 md:mx-3"
+                    style={{ minWidth: '120px', height: '60px' }}
                   >
-                    <span className="text-white/60 text-xs text-center">{award.logo}</span>
+                    <span className="text-white/60 text-[10px] md:text-xs text-center">{award.logo}</span>
                   </div>
                 ))}
               </React.Fragment>
@@ -187,15 +187,15 @@ const Footer = () => {
         </div>
 
         {/* Copyright & Links */}
-        <div className=" font-americana pt-6 w-full">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-[rem] text-md text-white/70">
-            <div className="flex flex-wrap gap-x-[2rem] gap-y-4 justify-start ">
+        <div className="font-americana pt-6 w-full">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4 text-xs md:text-sm text-white/70">
+            <div className="flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-4 justify-center md:justify-start text-center md:text-left">
               <a href="#terms" className="hover:text-white transition-colors">Terms</a>
               <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="#bookings" className="hover:text-white transition-colors">Ulaman Bookings</a>
-              <span>Kids under 6 are not advised.</span>
-              <span>© 2024-2025 Two Moons Studio for ulamanbali.com. All Rights Reserved</span>
-              <span>Made With ❤︎ By Two Suns Studio </span>
+              <span className="w-full md:w-auto">Kids under 6 are not advised.</span>
+              <span className="w-full md:w-auto">© 2024-2025 Two Moons Studio for ulamanbali.com. All Rights Reserved</span>
+              <span className="w-full md:w-auto">Made With ❤︎ By Two Suns Studio </span>
             </div>
           </div>
         </div>
@@ -203,12 +203,12 @@ const Footer = () => {
       </div>
 
       {/* 2. RUNNING TEXT (FULL WIDTH) */}
-      <div className="mt-8 overflow-hidden bg-[#EFEBE2] py-3 w-full">
+      <div className="mt-6 md:mt-8 overflow-hidden bg-[#EFEBE2] py-2 md:py-3 w-full">
         <div className="flex animate-scroll-infinite whitespace-nowrap">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex">
-              <span className="text-[#7A8B7F] text-sm mx-8">● The Avatar Experience | 3 days 2 nights</span>
-              <span className="text-[#7A8B7F] text-sm mx-8">● The Ultimate Honeymoon | 3 days 2 nights</span>
+              <span className="text-[#7A8B7F] text-xs md:text-sm mx-4 md:mx-8">● The Avatar Experience | 3 days 2 nights</span>
+              <span className="text-[#7A8B7F] text-xs md:text-sm mx-4 md:mx-8">● The Ultimate Honeymoon | 3 days 2 nights</span>
             </div>
           ))}
         </div>
