@@ -127,14 +127,14 @@ const Experiences = () => {
           <div className="hidden lg:flex flex-col items-center lg:w-[10vw] lg:h-[12vw] xl:w-[5vw] xl:h-[15vw] flex-shrink-0 space-y-8 border-current lg:mr-[1vw] lg:ml-[2vw] xl:ml-[-3vw]">
             <button
               onClick={() => scroll('left')}
-              className="p-[1.5vw] border border-amber-800/50 hover:bg-amber-800/10 transition-all duration-300 text-amber-800"
+              className="p-[1.5vw] border border-[#C69C4D] transition-all duration-300 text-[#C69C4D]"
               aria-label="Scroll left"
             >
               <ArrowLeft className="w-[2vw] h-[2vw]" />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="p-[1.5vw] border border-amber-800/50 hover:bg-amber-800/10 transition-all duration-300 text-amber-800"
+              className="p-[1.5vw] border border-[#C69C4D] transition-all duration-300 text-[#C69C4D]"
               aria-label="Scroll right"
             >
               <ArrowRight className="w-[2vw] h-[2vw]" />
