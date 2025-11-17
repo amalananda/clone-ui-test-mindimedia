@@ -1,16 +1,16 @@
 // components/sections/Rooms.tsx
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import UnderlineLink from '@/components/ui/UnderlineLink'
 import BeanieReveal from '@/components/animations/BeanieReveal'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const SINGLE_HERO_IMAGE =
   'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&h=1000&fit=crop&q=80'
 
-const HeroWithPackages = () => {
+const RoomsPackages = () => {
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const HeroWithPackages = () => {
     window.addEventListener('resize', checkScreenSize)
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const packages = [
     {
@@ -41,20 +42,31 @@ const HeroWithPackages = () => {
     },
   ]
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 450
+      if (direction === 'left') {
+        scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+      } else {
+        scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+      }
+    }
+  }
+
   return (
     <>
       {/* TEXT SECTION */}
       <section
-        className="relative bg-[#EFEBE2] flex flex-col items-center justify-center text-center"
+        className="relative bg-[#EFEBE2] flex flex-col items-center justify-center text-center px-4"
         style={{ minHeight: '100vh' }}
       >
-        <div className="max-w-7xl mx-auto px-8 z-10">
-          <h1 className={`font-americana text-[#C69C4D] mb-8 leading-relaxed ${isDesktop ? 'text-[2.5rem]' : 'text-[1.875rem]'
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 z-10">
+          <h1 className={`font-americana text-[#C69C4D] mb-6 sm:mb-8 leading-relaxed ${isDesktop ? 'text-[2.5rem]' : 'text-[1.5rem] sm:text-[1.875rem]'
             }`}>
-            Experience a blend of nature, comfort and<br />
+            Experience a blend of nature, comfort and<br className="hidden sm:block" />
             luxury like never before.
           </h1>
-          <button className="px-8 py-3 border-2 text-[#C69C4D] transition-all duration-300 tracking-wider text-sm font-medium rounded-full shadow-lg hover:shadow-xl">
+          <button className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 text-[#C69C4D] transition-all duration-300 tracking-wider text-xs sm:text-sm font-medium rounded-full shadow-lg hover:shadow-xl">
             BOOK YOUR STAY
           </button>
         </div>
@@ -71,10 +83,10 @@ const HeroWithPackages = () => {
       />
 
       {/* PACKAGES SECTION */}
-      <section className="py-20 bg-[#EFEBE2]">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2 className={`font-americana text-[#C69C4D] mb-4 leading-relaxed ${isDesktop ? 'text-[2.5rem]' : 'text-[1.875rem]'
+      <section className="py-12 sm:py-16 md:py-20 bg-[#EFEBE2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className={`font-americana text-[#C69C4D] mb-4 leading-relaxed px-4 ${isDesktop ? 'text-[2.5rem]' : 'text-[1.5rem] sm:text-[1.875rem]'
               }`}>
               Book one of our special<br />
               packages for a getaway you&apos;ll<br />
@@ -82,47 +94,61 @@ const HeroWithPackages = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {packages.map((pkg, i) => (
-              <div
-                key={pkg.id}
-                className="group relative"
-                style={{
-                  animation: `fadeInUp 0.8s ease-out ${i * 0.2}s both`,
-                }}
+          {/* WRAPPER FLEX UNTUK NAVIGATION + CARDS */}
+          <div className="flex items-center justify-center max-w-6xl mx-auto">
+            {/* NAVIGATION BUTTONS - KIRI */}
+            <div className="hidden lg:flex flex-col items-center lg:w-[10vw] lg:h-[12vw] xl:w-[5vw] xl:h-[15vw] flex-shrink-0 space-y-8 border-current lg:mr-[1vw] lg:ml-[2vw] xl:ml-[-3vw]">
+              <button
+                onClick={() => scroll('left')}
+                className="p-[1.5vw] border border-[#C69C4D] transition-all duration-300 text-[#C69C4D]"
+                aria-label="Scroll left"
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-xl">
-                  <div className="relative h-96 overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={pkg.name}
-                      fill
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  </div>
+                <ArrowLeft className="w-[2vw] h-[2vw]" />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                className="p-[1.5vw] border border-[#C69C4D] transition-all duration-300 text-[#C69C4D]"
+                aria-label="Scroll right"
+              >
+                <ArrowRight className="w-[2vw] h-[2vw]" />
+              </button>
+            </div>
+            {/* Mobile: Horizontal Scroll | Desktop: Grid */}
+            <div className="md:grid md:grid-cols-2 md:gap-8 max-w-5xl mx-auto md:justify-items-center">
+              {/* Mobile Wrapper */}
+              <div className="flex md:contents overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 pb-4 px-4 sm:px-0 md:gap-0">
+                {packages.map((pkg,) => (
+                  <div
+                    key={pkg.id}
+                    className="flex-none snap-start group relative overflow-hidden w-[311.21px] md:w-[343.65px] md:snap-center"
+                  >
+                    <div className="relative overflow-hidden rounded-2xl">
+                      {/* GAMBAR */}
+                      <div className="relative h-[329.88px] md:h-[364.27px] overflow-hidden">
+                        <Image
+                          src={pkg.image}
+                          alt={pkg.name}
+                          fill
+                          className="w-full h-full object-cover "
+                          sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, 40vw"
+                        />
+                      </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-xs tracking-widest uppercase mb-2 text-amber-400 font-basis">
-                      {pkg.duration}
-                    </p>
-                    <h3 className="text-2xl md:text-3xl font-americana mb-4">
-                      {pkg.name}
-                    </h3>
-                    <UnderlineLink href="#discover" className="mt-5">DISCOVER</UnderlineLink>
+                      {/* KONTEN DI BAWAH GAMBAR */}
+                      <div className=" bg-[#EFEBE2] mt-4 ">
+                        <p className="text-xs mb-2 text-[#343E35] font-basis bg-[#EDE6D8] w-[111.44px]">
+                          {pkg.duration}
+                        </p>
+                        <h3 className="text-[1.37rem] md:text-[1.58rem] font-americana mb-3 sm:mb-4 text-[#C69C4D]">
+                          {pkg.name}
+                        </h3>
+                        <UnderlineLink href="#discover" className="mt-4 sm:mt-5">DISCOVER</UnderlineLink>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <button className="w-12 h-12 border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg">
-              <ChevronLeft size={20} />
-            </button>
-            <button className="w-12 h-12 border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-lg">
-              <ChevronRight size={20} />
-            </button>
+            </div>
           </div>
         </div>
       </section>
@@ -138,9 +164,18 @@ const HeroWithPackages = () => {
             transform: translateY(0);
           }
         }
+
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       `}</style>
     </>
   )
 }
 
-export default HeroWithPackages
+export default RoomsPackages
