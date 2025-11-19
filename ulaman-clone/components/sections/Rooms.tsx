@@ -114,10 +114,13 @@ const RoomsPackages = () => {
               </button>
             </div>
             {/* Mobile: Horizontal Scroll | Desktop: Grid */}
-            <div className="md:grid md:grid-cols-2 md:gap-8 max-w-5xl mx-auto md:justify-items-center">
+            <div className="w-full md:grid md:grid-cols-2 md:gap-8 md:max-w-5xl md:mx-auto md:justify-items-center">
               {/* Mobile Wrapper */}
-              <div className="flex md:contents overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 pb-4 px-4 sm:px-0 md:gap-0">
-                {packages.map((pkg,) => (
+              <div
+                ref={scrollContainerRef}
+                className="flex md:contents overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 pb-4 px-4 sm:px-0 md:gap-0"
+              >
+                {packages.map((pkg) => (
                   <div
                     key={pkg.id}
                     className="flex-none snap-start group relative overflow-hidden w-[311.21px] md:w-[343.65px] md:snap-center"
@@ -136,7 +139,7 @@ const RoomsPackages = () => {
 
                       {/* KONTEN DI BAWAH GAMBAR */}
                       <div className=" bg-[#EFEBE2] mt-4 ">
-                        <p className="text-xs mb-2 text-[#343E35] font-basis bg-[#EDE6D8] w-[111.44px]">
+                        <p className="text-xs mb-2 text-[#343E35] font-basis bg-[#EDE6D8] w-[111.44px] px-2 py-1">
                           {pkg.duration}
                         </p>
                         <h3 className="text-[1.37rem] md:text-[1.58rem] font-americana mb-3 sm:mb-4 text-[#C69C4D]">
@@ -149,6 +152,24 @@ const RoomsPackages = () => {
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* MOBILE NAVIGATION BUTTONS - BAWAH */}
+          <div className="flex lg:hidden justify-center items-center gap-4 mt-8">
+            <button
+              onClick={() => scroll('left')}
+              className="p-3 border border-[#C69C4D] transition-all duration-300 text-[#C69C4D] rounded-md hover:bg-[#C69C4D] hover:text-white"
+              aria-label="Scroll left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="p-3 border border-[#C69C4D] transition-all duration-300 text-[#C69C4D] rounded-md hover:bg-[#C69C4D] hover:text-white"
+              aria-label="Scroll right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
