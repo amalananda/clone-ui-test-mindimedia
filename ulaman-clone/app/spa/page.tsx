@@ -1,15 +1,9 @@
 // app/spa/page.tsx
 'use client'
-import React, { useState } from 'react'
-import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Footer from '@/components/sections/Footer'
-import LocationMap from '@/components/sections/Navigation'
-import Hero from '@/components/sections/Hero'
+import React, { } from 'react'
 import BeanieReveal from '@/components/animations/BeanieReveal'
 import UnderlineLink from '@/components/ui/UnderlineLink'
 import CTA from '@/components/sections/CallToAction'
-import Testimonials from '@/components/sections/Testimonials'
 import SpaTextReveal from '@/components/spa_sections/SpaTextReveal'
 import Description from '@/components/room_sections/Description'
 import GridImages from '@/components/ui/GridImages'
@@ -31,59 +25,10 @@ interface SpaImage {
 }
 
 export default function SpaPage() {
-  const [activeTab, setActiveTab] = useState<'healing' | 'detox'>('healing')
 
   const SINGLE_HERO_IMAGE =
     'https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070'
-  const retreatPrograms = {
-    healing: {
-      title: 'Healing Mind, Body & Soul',
-      subtitle: 'Unveil Your True Self',
-      nights: ['3 Nights', '5 Nights', '7 Nights'],
-      description: `Reconnect with nature and discover your inner harmony, from our 3,<br/>
-      5, or 7-night wellness retreats, each designed to nourish your mind,<br/>
-      body and soul. Experience the transformative experiences such as<br/>
-      chakra balancing, healing rituals, spa treatments and guided wellness<br/>
-      activities.`,
 
-      suitable: [
-        'Balance their energy',
-        'Restore inner peace and strength',
-        'Discover themself on a deeper level',
-        'Release emotional blockages'
-      ],
-      images: [
-        'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1545389336-cf090694435e?w=600&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=800&fit=crop'
-      ]
-    },
-    detox: {
-      title: 'Detox & Juice Cleanse Program',
-      subtitle: '',
-      nights: ['4 Nights', '6 Nights', '8 Nights'],
-      description: `Improve your health and well-being with Ulaman's carefully planned <br/>
-      detox programs. Choose from 4, 6, or 8 nights of personalized <br/>
-      cleansing journeys, each offering a mix of renewal, healing and <br/>
-      balance.`,
-      suitable: [
-        'Achieve weight loss and feel lighter',
-        'Reset the body and restore balance',
-        'Eliminate toxins for a fresh start',
-        'Clear the mind and sharpen focus',
-        'Release stress, find balance and ignite creativity'
-      ],
-      images: [
-        'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=800&fit=crop'
-      ]
-    }
-  }
-
-
-
-  const currentProgram = retreatPrograms[activeTab]
   const spaGalleryImages = galleryData['spa'] as SpaImage[] || []
 
   return (
