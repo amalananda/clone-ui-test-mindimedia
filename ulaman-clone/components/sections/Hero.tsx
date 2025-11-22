@@ -26,7 +26,7 @@ interface HeroProps {
 }
 
 const defaultLeftNavItems: NavItem[] = [
-  { label: 'Villas', href: '/villas' },
+  { label: 'Villas', href: '/rooms' },
   { label: 'Spa', href: '/spa' },
   { label: 'Dine', href: '#dine' },
   { label: 'Retreats', href: '/retreats' }
