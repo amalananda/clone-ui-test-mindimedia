@@ -18,7 +18,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       '/rooms/floating-lake': 'Floating Lake',
       '/rooms/cocoon-jungle': 'Cocoon Jungle',
       '/rooms/avatar-tree-house': 'Avatar Tree House',
-      '/villas': 'Villas',
+      '/rooms': 'Villas',
       '/retreats': 'Retreats',
       '/spa': 'Spa',
     }
