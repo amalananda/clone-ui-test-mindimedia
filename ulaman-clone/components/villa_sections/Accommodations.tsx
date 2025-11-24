@@ -1,6 +1,6 @@
 export default function Accommodations() {
   return (
-    <div className="min-h-screen bg-[#EFEBE2] px-6 py-16 md:px-12 lg:px-24">
+    <div className="bg-[#EFEBE2] px-6 py-36 md:px-12">
       {/* Content Container */}
       <div className="max-w-7xl mx-auto">
         {/* Text Content */}
@@ -26,7 +26,7 @@ export default function Accommodations() {
         </div>
 
         {/* Amenities Icons */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
           {/* High-Speed Wifi */}
           <div className="flex flex-col items-center text-center">
             <div className="mb-6">
