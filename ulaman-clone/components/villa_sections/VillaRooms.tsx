@@ -1,16 +1,19 @@
 // components/villa_section/VillaRooms.tsx
 'use client'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import UnderlineLink from '@/components/ui/UnderlineLink'
 import { usePathname } from 'next/navigation'
+import BookingModal from './BookingModal'
 
 export default function VillaRooms() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const scrollContainerRef2 = useRef<HTMLDivElement>(null)
   const scrollContainerRef3 = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
+  const [selectedRoom, setSelectedRoom] = useState('Floating Lake')
 
   const floatingLake = [
     {
@@ -81,9 +84,30 @@ export default function VillaRooms() {
       })
     }
   }
+  useEffect(() => {
+    if (isBookingOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isBookingOpen])
+
+
+
+  const closeBookingModal = () => {
+    setIsBookingOpen(false)
+  }
 
   return (
     <>
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={closeBookingModal}
+        roomType={selectedRoom}
+      />
       {/* Section 1 - Floating Lake */}
       <section className="py-24 bg-[#EFEBE2] relative overflow-x-hidden">
         <div className="max-w-[1600px] mx-auto px-8">
@@ -126,8 +150,17 @@ export default function VillaRooms() {
                 Set above Bali&apos;s only bio-filtered, koi-filled lake, Ulaman&apos;s Floating Lake Villas offer a serene and luxurious experience unlike any other. Each villa features a private floating deck and a sunken round hammock, thoughtfully designed for couples—perfect for stargazing or feeding the koi below. Seamlessly blending modern tropical elegance with natural elements, the villas include a sun deck patio, hanging net, and a handcrafted teakwood bathtub.
               </p>
               <div className="flex gap-8">
-                <UnderlineLink href={filteredRooms[0].link}>BOOK NOW</UnderlineLink>
-                <UnderlineLink href={filteredRooms[0].link}>LEARN NOW</UnderlineLink>
+                <UnderlineLink onClick={() => {
+                  setSelectedRoom('Floating Lake')
+                  setIsBookingOpen(true)
+                }}>
+                  BOOK NOW
+                </UnderlineLink>
+                <UnderlineLink
+                  href={filteredRooms[0].link}
+                  className="text-[#C69C4D]/50"
+                  underlineColor="bg-[#C69C4D]/50"
+                >LEARN NOW</UnderlineLink>
               </div>
             </div>
           </div>
@@ -158,8 +191,17 @@ export default function VillaRooms() {
                   </p>
                 </div>
                 <div className="flex gap-8 pointer-events-auto ">
-                  <UnderlineLink href={filteredRooms[0].link} className="">BOOK NOW</UnderlineLink>
-                  <UnderlineLink href={filteredRooms[0].link} className="">LEARN NOW</UnderlineLink>
+                  <UnderlineLink onClick={() => {
+                    setSelectedRoom('Floating Lake')
+                    setIsBookingOpen(true)
+                  }}>
+                    BOOK NOW
+                  </UnderlineLink>
+                  <UnderlineLink
+                    href={filteredRooms[0].link}
+                    className="text-[#C69C4D]/50"
+                    underlineColor="bg-[#C69C4D]/50"
+                  >LEARN NOW</UnderlineLink>
                 </div>
 
                 <div className="flex gap-4 lg:items-end md:pt-28">
@@ -261,8 +303,17 @@ export default function VillaRooms() {
                 Elevated among the treetops, the Cocoon Jungle Villa is a bamboo-woven sanctuary featuring a black bamboo bathroom and a spacious private balcony—perfect for romantic breakfasts overlooking the jungle, garden, and pool. These elegantly designed, cocoon-like villas offer bamboo floors, the largest private balcony among all room types, and the most refined ensuite bathroom at Ulaman.
               </p>
               <div className="flex gap-8">
-                <UnderlineLink href={filteredRooms[0].link}>BOOK NOW</UnderlineLink>
-                <UnderlineLink href={filteredRooms[0].link}>LEARN NOW</UnderlineLink>
+                <UnderlineLink onClick={() => {
+                  setSelectedRoom('Cocoon Jungle')
+                  setIsBookingOpen(true)
+                }}>
+                  BOOK NOW
+                </UnderlineLink>
+                <UnderlineLink
+                  href={filteredRooms[0].link}
+                  className="text-[#C69C4D]/50"
+                  underlineColor="bg-[#C69C4D]/50"
+                >LEARN NOW</UnderlineLink>
               </div>
             </div>
           </div>
@@ -348,8 +399,17 @@ export default function VillaRooms() {
                 </div>
 
                 <div className="flex gap-8 pointer-events-auto ">
-                  <UnderlineLink href={filteredRooms[0].link} className="">BOOK NOW</UnderlineLink>
-                  <UnderlineLink href={filteredRooms[0].link} className="">LEARN NOW</UnderlineLink>
+                  <UnderlineLink onClick={() => {
+                    setSelectedRoom('Cocoon Jungle')
+                    setIsBookingOpen(true)
+                  }}>
+                    BOOK NOW
+                  </UnderlineLink>
+                  <UnderlineLink
+                    href={filteredRooms[0].link}
+                    className="text-[#C69C4D]/50"
+                    underlineColor="bg-[#C69C4D]/50"
+                  >LEARN NOW</UnderlineLink>
                 </div>
 
                 <div className="flex gap-4 lg:items-end md:pt-12">
@@ -420,8 +480,17 @@ export default function VillaRooms() {
                 Elevated among the treetops, Ulaman&apos;s Avatar Tree House Villas offer a truly unique sanctuary, surrounded by breathtaking rice field views and lush jungle landscapes. Perched 9 meters above ground and accessed via a striking bamboo-woven tunnel, these villas immerse guests in a seamless blend of architectural elegance and natural serenity.
               </p>
               <div className="flex gap-8">
-                <UnderlineLink href={filteredRooms[0].link}>BOOK NOW</UnderlineLink>
-                <UnderlineLink href={filteredRooms[0].link}>LEARN NOW</UnderlineLink>
+                <UnderlineLink onClick={() => {
+                  setSelectedRoom('Avatar Tree House')
+                  setIsBookingOpen(true)
+                }}>
+                  BOOK NOW
+                </UnderlineLink>
+                <UnderlineLink
+                  href={filteredRooms[0].link}
+                  className="text-[#C69C4D]/50"
+                  underlineColor="bg-[#C69C4D]/50"
+                >LEARN NOW</UnderlineLink>
               </div>
             </div>
           </div>
@@ -452,8 +521,17 @@ export default function VillaRooms() {
                   </p>
                 </div>
                 <div className="flex gap-8 pointer-events-auto ">
-                  <UnderlineLink href={filteredRooms[0].link} className="">BOOK NOW</UnderlineLink>
-                  <UnderlineLink href={filteredRooms[0].link} className="">LEARN NOW</UnderlineLink>
+                  <UnderlineLink onClick={() => {
+                    setSelectedRoom('Avatar Tree House')
+                    setIsBookingOpen(true)
+                  }}>
+                    BOOK NOW
+                  </UnderlineLink>
+                  <UnderlineLink
+                    href={filteredRooms[0].link}
+                    className="text-[#C69C4D]/50"
+                    underlineColor="bg-[#C69C4D]/50"
+                  >LEARN NOW</UnderlineLink>
                 </div>
 
                 <div className="flex gap-4 lg:items-end md:pt-28">
