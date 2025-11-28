@@ -135,4 +135,4 @@ const HeroTextReveal: React.FC<AboutTextRevealProps> = ({
   )
 }
 
-export default TextReveal
+export default HeroTextReveal
