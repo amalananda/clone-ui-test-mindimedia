@@ -192,8 +192,8 @@ const About = () => {
               </p>
 
               {/* Custom Link for this page */}
-              <UnderlineLink href="/spa/day-pass" className="mt-5">
-                LEARN MORE
+              <UnderlineLink href="/about" className="mt-5">
+                ABOUT US
               </UnderlineLink>
             </div>
           )}

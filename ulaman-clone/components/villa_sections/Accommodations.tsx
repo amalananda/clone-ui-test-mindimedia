@@ -1,3 +1,4 @@
+// components/villa_sections/Accomodations
 export default function Accommodations() {
   return (
     <div className="bg-[#EFEBE2] px-6 py-36 md:px-12">

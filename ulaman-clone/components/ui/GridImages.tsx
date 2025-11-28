@@ -175,6 +175,11 @@ const GridImages = ({
   const distributeImages = () => {
     const cols: GridImage[][] = Array.from({ length: columnCount }, () => [])
 
+    // Guard against undefined or null images
+    if (!images || !Array.isArray(images)) {
+      return cols
+    }
+
     // Simply distribute in order, filling columns from left to right
     images.forEach((image, index) => {
       const colIndex = index % columnCount
