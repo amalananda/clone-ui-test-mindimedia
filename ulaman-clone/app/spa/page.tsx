@@ -1,13 +1,13 @@
 // app/spa/page.tsx
 'use client'
-import React, { } from 'react'
+import React from 'react'
 import BeanieReveal from '@/components/animations/BeanieReveal'
 import UnderlineLink from '@/components/ui/UnderlineLink'
 import CTA from '@/components/sections/CallToAction'
 import SpaTextReveal from '@/components/spa_sections/SpaTextReveal'
 import Description from '@/components/room_sections/Description'
 import GridImages from '@/components/ui/GridImages'
-import galleryData from '@/lib/data/gallery-images.json'
+import { useGalleryData } from '@/hooks/useGalleryData'
 import Bestselling from '@/components/spa_sections/Bestselling'
 import ParallaxTextImage from '@/components/sections/ParallaxTextImage'
 import SpaFacilities from '@/components/spa_sections/SpaFacilities'
@@ -16,20 +16,16 @@ import SpaServices from '@/components/spa_sections/SpaServices'
 import SpaFooter from '@/components/spa_sections/SpaFooter'
 import HeroSpa from '@/components/spa_sections/HeroSpa'
 
-interface SpaImage {
-  id: number
-  url: string
-  title: string
-  size: 'small' | 'medium' | 'tall' | 'extra-tall' | 'super-tall'
-  alternateImages?: string[]
-}
-
 export default function SpaPage() {
-
   const SINGLE_HERO_IMAGE =
     'https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070'
 
-  const spaGalleryImages = galleryData['spa'] as SpaImage[] || []
+  // ✅ Fetch gallery data dari backend dengan fallback ke JSON
+  const {
+    images: spaGalleryImages,
+    loading: galleryLoading,
+    isFromBackend
+  } = useGalleryData('spa')
 
   return (
     <main className="relative bg-[#EFEBE2] overflow-x-hidden">
@@ -73,7 +69,6 @@ export default function SpaPage() {
         </UnderlineLink>
       </div>
 
-
       {/* SECTION 3: IMAGE BEANIE ANIMATION - REUSABLE */}
       <BeanieReveal
         image={SINGLE_HERO_IMAGE}
@@ -84,6 +79,7 @@ export default function SpaPage() {
         id="beanie-image"
         className='relative'
       />
+
       {/* SECTION 4: Description */}
       <div className="flex flex-col justify-center items-center h-screen bg-[#EFEBE2] mt-[-8rem]">
         <Description
@@ -100,40 +96,51 @@ export default function SpaPage() {
         />
       </div>
 
-      {/* SECTION 5: Spa Gallery */}
+      {/* SECTION 5: Spa Gallery - DATA DARI BACKEND/JSON */}
       <section id="spaGallery" className="relative py-12 md:py-24 bg-[#EFEBE2] mt-[-15rem]">
         <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <GridImages
-            images={spaGalleryImages}
-            autoRotate={true}
-            rotateInterval={3000}
-            columns={{
-              mobile: 2,
-              tablet: 3,
-              desktop: 3
-            }}
-            columnWidth={347.44}
-            gap={16}
-            showLightbox={true}
-          />
+          {/* Debug info - bisa dihapus nanti */}
+          {!galleryLoading && (
+            <div className="text-center mb-4">
+              <p className="text-xs text-gray-500">
+                {isFromBackend ? '✅ Data from Backend' : '📦 Data from Local JSON'}
+              </p>
+            </div>
+          )}
+
+          {galleryLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#b79f8c]"></div>
+            </div>
+          ) : (
+            <GridImages
+              images={spaGalleryImages}
+              autoRotate={true}
+              rotateInterval={3000}
+              columns={{
+                mobile: 2,
+                tablet: 3,
+                desktop: 3
+              }}
+              columnWidth={347.44}
+              gap={16}
+              showLightbox={true}
+            />
+          )}
         </div>
       </section>
 
       {/* SECTION 6: Description */}
       <div className="flex flex-col justify-start items-center py-12 md:py-16 bg-[#EFEBE2] -mt-20 md:-mt-16">
         <Description
-          // Desktop version
           title="Discover Our Wide<br/> Range of Spa<br/> Treatments."
           paragraphs={[
             "Indulge in our spa treatments, featuring traditional Balinese massage, hot stone<br/>therapy, bamboo massage and 4 hand massage. Our full-service packages include<br/> facials and body scrubs, ranging from detox sessions to full-day pampering, using<br/> natural, organic ingredients."
           ]}
-
-          // Mobile version - br di posisi berbeda
           mobileTitle="Discover Our Wide Range<br/> of Spa Treatments."
           mobileParagraphs={[
             "Indulge in our spa treatments, featuring traditional<br/> Balinese massage, hot stone therapy, bamboo<br/> massage and 4 hand massage. Our full-service<br/> packages include facials and body scrubs, ranging<br/> from detox sessions to full-day pampering, using<br/> natural, organic ingredients."
           ]}
-
           subtitle=""
           titleClassName='text-[1.6rem] lg:text-4xl text-[#b79f8c]'
           paragraphClassName='text-[14.475px] lg:text-[15.6px] text-[#343e35]'
@@ -223,6 +230,6 @@ export default function SpaPage() {
         titleSize="text-[1.56rem] lg:text-[2.16rem]"
       />
       <SpaFooter />
-    </main >
+    </main>
   )
 }
