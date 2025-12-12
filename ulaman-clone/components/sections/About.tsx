@@ -98,19 +98,16 @@ const About = () => {
     }
 
   const titleText =
-    "An award-winning eco-luxury resort |BREAK|" +
-    "offering a unique hideaway experience. |BREAK|" +
-    "Embrace authenticity, balance, and |BREAK|" +
-    "harmony with nature in a healing, |BREAK|" +
-    "luxurious environment."
+    "An award-winning eco-luxury resort offering |BREAK|" +
+    "a unique hideaway experience. Embrace |BREAK|" +
+    "authenticity, balance, and harmony with |BREAK|" +
+    "nature in a healing, luxurious environment.|BREAK|"
 
   const bodyText =
-    "We believe nature and luxury can coexist. Ulaman |BREAK|" +
-    "Eco Luxury Resort offers a secluded, lush haven |BREAK|" +
-    "with luxurious amenities and impeccable service. |BREAK|" +
-    "Immerse yourself in traditional Balinese culture and |BREAK|" +
-    "leave feeling renewed, all while minimizing your |BREAK|" +
-    "ecological footprint. Recharge your mind, body, and |BREAK|" +
+    "We believe nature and luxury can coexist. Ulaman Eco Luxury Resort offers a |BREAK|" +
+    "secluded, lush haven with luxurious amenities and impeccable service. |BREAK|" +
+    "Immerse yourself in traditional Balinese culture and leave feeling renewed, all|BREAK|" +
+    "while minimizing your ecological footprint. Recharge your mind, body, and |BREAK|" +
     "soul in this unique holistic retreat."
   interface Slide {
     [key: string]: unknown // Add index signature
@@ -170,9 +167,9 @@ const About = () => {
         <ImageSlider
           slides={sliderData}
           renderContent={(slide) => (
-            <div className="ml-12">
+            <div className="ml-12 w-full pr-8l">
               {/* Title */}
-              <div className="font-americana text-[1.35rem] lg:text-[1.625rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out">
+              <div className="font-americana text-[1.25rem] lg:text-[1.5rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out">
                 {(slide as unknown as Slide).title.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
                   <React.Fragment key={index}>
                     {segment}
@@ -182,7 +179,7 @@ const About = () => {
               </div>
 
               {/* Body */}
-              <p className="mt-8 font-basis text-gray-400 text-lg leading-relaxed transition-opacity duration-500 ease-in-out">
+              <p className="mt-8 font-basis text-[#343E35]/70 text-base leading-relaxed transition-opacity duration-500 ease-in-out">
                 {(slide as Slide).body.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
                   <React.Fragment key={index}>
                     {segment}
@@ -192,7 +189,7 @@ const About = () => {
               </p>
 
               {/* Custom Link for this page */}
-              <UnderlineLink href="/about" className="mt-5">
+              <UnderlineLink href="/about" className="mt-5 font-basis">
                 ABOUT US
               </UnderlineLink>
             </div>
