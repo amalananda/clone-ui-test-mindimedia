@@ -60,21 +60,21 @@ const Experiences = () => {
     {
       id: 1,
       title: 'Floating Lake',
-      subtitle: 'A luxurious floating villa on Ulaman’s bio-filtered lake.',
+      subtitle: 'A <i>luxurious floating villa</i> on Ulaman’s bio-filtered lake.',
       images: FloatingLakeImages,
       link: '/rooms/floating-lake'
     },
     {
       id: 2,
       title: 'Cocoon Jungle',
-      subtitle: 'Indulge in an unparalleled blend of exotic elegance and coziness.',
+      subtitle: 'Indulge in an unparalleled <i>blend of exotic elegance and coziness</i>.',
       images: CocoonJungleImages,
       link: '/rooms/cocoon-jungle'
     },
     {
       id: 3,
       title: 'Avatar Tree House',
-      subtitle: 'Experience luxury in an avant-garde design with breathtaking 180° views.',
+      subtitle: 'Experience luxury in an <i>avant-garde</i> design with breathtaking 180° views.',
       images: AvatarTreeHouseImages,
       link: '/rooms/avatar-tree-house'
     },
@@ -176,10 +176,10 @@ const Experiences = () => {
                       )}
                     </div>
 
-                    <div className="p-4 sm:p-5 md:p-6 bg-[#EFEBE2]">
-                      <h3 className="text-xl sm:text-2xl font-americana text-[#C69C4D] mb-2">{exp.title}</h3>
-                      <p className="text-sm sm:text-base font-americana text-stone-600 mb-3 sm:mb-4">{exp.subtitle}</p>
-                      <UnderlineLink href={exp.link} className="mt-4 sm:mt-5 text-sm sm:text-base">DISCOVER</UnderlineLink>
+                    <div className="mt-4 bg-[#EFEBE2]">
+                      <h3 className="text-xl md:text-[1.625rem] font-americana text-[#C69C4D] mb-2">{exp.title}</h3>
+                      <p dangerouslySetInnerHTML={{ __html: exp.subtitle }} className="text-sm sm:text-base font-americana text-stone-600 mb-3 sm:mb-4 " />
+                      <UnderlineLink href={exp.link} className="mt-4 sm:mt-5 text-sm md:text-[0.9375rem] font-basis">DISCOVER</UnderlineLink>
                     </div>
                   </div>
                 )
