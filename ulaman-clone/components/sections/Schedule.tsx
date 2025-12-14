@@ -28,6 +28,9 @@ interface ScheduleSlot {
 }
 
 const WeeklySchedule = () => {
+  // ⭐ UBAH INI UNTUK MENGATUR LEBAR TIME COLUMN
+  const timeColumnWidth = '80px'
+
   const experiencesData = {
     "experiences": [
       {
@@ -145,27 +148,27 @@ const WeeklySchedule = () => {
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-2xl lg:text-5xl font-serif text-[#c69c4d] mb-5">
+          <h1 className="text-[1.701rem] lg:text-[2.50rem] font-americana text-[#c69c4d] mb-1">
             Weekly Schedule
           </h1>
-          <p className="text-sm lg:text-base text-[#343e35]">
+          <p className="text-[0.9rem] lg:text-base text-[#343e35] font-basis">
             Advanced Booking Is Recommended
           </p>
         </div>
 
         {/* Mobile: Horizontal Scroll Wrapper */}
-        <div className="overflow-x-auto -mx-4 px-4 md:overflow-x-visible md:mx-0 md:px-0 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        <div className="overflow-x-auto -mx-4 px-4 md:overflow-x-visible md:mx-0 md:px-0 scrollbar-hide font-basis" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {/* Schedule Table */}
           <div className="bg-transparent min-w-[800px] md:min-w-0">
             {/* Days Header */}
-            <div className="grid grid-cols-8 border-b border-[#c69c4d]">
-              <div className="col-span-1 border-r border-[#c69c4d]"></div>
+            <div className="grid border-b border-[#c69c4d]" style={{ gridTemplateColumns: `${timeColumnWidth} repeat(7, 1fr)` }}>
+              <div className="border-r border-[#c69c4d]"></div>
               {daysOfWeek.map((day) => (
                 <div
                   key={day}
-                  className="col-span-1 text-center py-4 md:py-6 border-r border-[#c69c4d] last:border-r-0"
+                  className="text-center py-4 md:py-6 border-r border-[#c69c4d] last:border-r-0"
                 >
-                  <span className="text-[#c69c4d] font-light text-xs md:text-base">
+                  <span className="text-[#c69c4d] font-light text-[11.76px] md:text-[14px]">
                     {day}
                   </span>
                 </div>
@@ -174,10 +177,10 @@ const WeeklySchedule = () => {
 
             {/* Schedule Rows */}
             {scheduleData.map((slot, index) => (
-              <div key={index} className="grid grid-cols-8 border-b border-[#c69c4d]">
+              <div key={index} className="grid border-b border-[#c69c4d]" style={{ gridTemplateColumns: `${timeColumnWidth} repeat(7, 1fr)` }}>
                 {/* Time Column */}
-                <div className="col-span-1 flex items-start justify-start py-4 md:py-6 pr-2 md:pr-4 border-r border-[#c69c4d]">
-                  <span className="text-[#c69c4d] font-light text-xs md:text-base whitespace-nowrap">
+                <div className="flex items-center justify-center py-4 md:py-6 pr-2 md:pr-4 border-r border-[#c69c4d]">
+                  <span className="text-[#c69c4d] font-light text-[11.76px] md:text-[14px] whitespace-nowrap">
                     {slot.time}
                   </span>
                 </div>
@@ -186,10 +189,10 @@ const WeeklySchedule = () => {
                 {daysOfWeek.map((day) => (
                   <div
                     key={day}
-                    className="col-span-1 p-2 md:p-3 border-r border-[#c69c4d] last:border-r-0"
+                    className="p-2 md:p-3 border-r border-[#c69c4d] last:border-r-0"
                   >
                     <div className={`${slot.color} rounded-md h-full min-h-[50px] md:min-h-[60px] flex items-center justify-center px-2 md:px-3 py-3 md:py-4`}>
-                      <span className="text-[#343e35] text-xs md:text-sm text-center font-light">
+                      <span className="text-[#343e35] text-[11.76px] md:text-[13px] text-center font-light">
                         {slot.activityName}
                       </span>
                     </div>
@@ -199,16 +202,16 @@ const WeeklySchedule = () => {
             ))}
 
             {/* Empty Row for spacing */}
-            <div className="grid grid-cols-8">
-              <div className="col-span-1 flex items-center justify-start py-4 md:py-6 border-r border-[#c69c4d]">
-                <span className="text-[#c69c4d] font-light text-xs md:text-base">
+            <div className="grid" style={{ gridTemplateColumns: `${timeColumnWidth} repeat(7, 1fr)` }}>
+              <div className="flex items-center justify-center py-4 md:py-6 pr-2 md:pr-4 border-r border-[#c69c4d]">
+                <span className="text-[#c69c4d] font-light text-[11.76px] md:text-[13px]">
                   {emptySlotTime}
                 </span>
               </div>
               {daysOfWeek.map((day) => (
                 <div
                   key={day}
-                  className="col-span-1 py-4 md:py-6 border-r border-[#c69c4d] last:border-r-0"
+                  className="py-4 md:py-6 border-r border-[#c69c4d] last:border-r-0"
                 />
               ))}
             </div>
@@ -216,8 +219,8 @@ const WeeklySchedule = () => {
         </div>
 
         {/* Download Button */}
-        <div className="mt-8 text-center md:text-left">
-          <button className="text-[#c69c4d] text-sm font-light uppercase tracking-wider border-b border-[#c69c4d] pb-1 hover:text-[#9a7348] hover:border-[#9a7348] transition-colors">
+        <div className="mt-8 text-center md:text-left ml-0 md:ml-19">
+          <button className="text-[#c69c4d] text-[13.57px] md:text-[15px] font-light font-basis uppercase tracking-wider border-b border-[#c69c4d] pb-1 hover:text-[#9a7348] hover:border-[#9a7348] transition-colors">
             Download PDF
           </button>
         </div>
