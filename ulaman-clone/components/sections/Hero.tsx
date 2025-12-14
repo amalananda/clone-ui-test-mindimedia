@@ -47,13 +47,38 @@ const Hero = ({
 }: HeroProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [showNav1, setShowNav1] = useState(false)
+  const [showNav2, setShowNav2] = useState(false)
+  const [showNav3, setShowNav3] = useState(false)
+  const [showNav4, setShowNav4] = useState(false)
+  const [showLogoAnim, setShowLogoAnim] = useState(false)
+  const [showButton, setShowButton] = useState(false)
+  const [showBg, setShowBg] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
+    const timer1 = setTimeout(() => setShowBg(true), 2000)
+    const timer2 = setTimeout(() => setShowNav1(true), 2200)
+    const timer3 = setTimeout(() => setShowNav2(true), 2400)
+    const timer4 = setTimeout(() => setShowNav3(true), 2600)
+    const timer5 = setTimeout(() => setShowNav4(true), 2800)
+    const timer6 = setTimeout(() => setShowLogoAnim(true), 3000)
+    const timer7 = setTimeout(() => setShowButton(true), 3200)
+
     const handleScroll = () => setScrolled(window.scrollY > 100)
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      clearTimeout(timer3)
+      clearTimeout(timer4)
+      clearTimeout(timer5)
+      clearTimeout(timer6)
+      clearTimeout(timer7)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   const scrollToSection = (href: string) => {
@@ -78,6 +103,8 @@ const Hero = ({
     setIsMenuOpen(false)
   }
 
+  const navStates = [showNav1, showNav2, showNav3, showNav4]
+
   return (
     <div id="home" className="relative min-h-screen bg-[#EFEBE2] overflow-hidden">
       {/* Navigation */}
@@ -92,7 +119,8 @@ const Hero = ({
             {/* Mobile Menu Button - Left */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden text-[#C69C4D] p-2 hover:bg-[#C69C4D]/10 rounded-lg transition-colors"
+              className={`lg:hidden text-[#C69C4D] p-2 hover:bg-[#C69C4D]/10 rounded-lg transition-all duration-700 ${showNav1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                }`}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,10 +136,8 @@ const Hero = ({
                     e.preventDefault()
                     scrollToSection(item.href)
                   }}
-                  className="text-[#C69C4D] font-basis transition-all duration-300 text-sm tracking-wide capitalize relative group"
-                  style={{
-                    animation: `fadeInDown 0.6s ease-out ${index * 0.1}s both`
-                  }}
+                  className={`text-[#C69C4D] font-basis transition-all duration-700 text-sm tracking-wide capitalize relative group ${navStates[index] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                    }`}
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-amber-400 transition-all duration-300 group-hover:w-full" />
@@ -121,7 +147,8 @@ const Hero = ({
 
             {/* Center Logo */}
             {showLogo && (
-              <div className="absolute left-1/2 -translate-x-1/2 text-center">
+              <div className={`absolute left-1/2 -translate-x-1/2 text-center transition-all duration-700 ${showLogoAnim ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                }`}>
                 <div className="text-[#C69C4D] mb-1">
                   <svg
                     width="32"
@@ -147,10 +174,8 @@ const Hero = ({
             {rightButton && (
               <button
                 onClick={handleButtonClick}
-                className="hidden lg:block px-6 py-2.5 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-300 rounded-sm"
-                style={{
-                  animation: 'fadeInDown 0.6s ease-out 0.4s both'
-                }}
+                className={`hidden lg:block px-6 py-2.5 border border-[#C69C4D] text-[#C69C4D] hover:text-white hover:bg-[#C69C4D] text-xs tracking-wider capitalize transition-all duration-700 rounded-tl-md rounded-br-md ${showButton ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 '
+                  }`}
               >
                 {rightButton.label}
               </button>
@@ -198,7 +223,8 @@ const Hero = ({
       <div className="relative h-screen">
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[5000ms] scale-110"
+          className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${showBg ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            }`}
           style={{
             backgroundImage: `url('${heroImage}')`
           }}
