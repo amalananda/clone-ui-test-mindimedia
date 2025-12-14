@@ -11,6 +11,7 @@ interface CallToActionProps {
   buttonHref?: string
   className?: string
   optionalSubtitle?: string
+  optionalSubtitleSize?: string
   titleColor?: string
   buttonColor?: string
   optionalSubtitleColor?: string
@@ -26,10 +27,11 @@ const CallToAction = ({
   buttonHref = "#guest",
   className = "",
   optionalSubtitle = "",
+  optionalSubtitleSize = "text-[14.475px] md:text-base",
   titleColor = "text-[#C69C4D]",
   buttonColor = "text-[#C69C4D]",
   optionalSubtitleColor = "text-[#C69C4D]",
-  titleSize = "text-2xl lg:text-3xl"
+  titleSize = "text-[25.3313px] lg:text-3xl"
 }: CallToActionProps) => {
   const mobileTitle = titleMobile || title
   const desktopTitle = titleDesktop || title
@@ -47,7 +49,7 @@ const CallToAction = ({
         </h3>
 
         {/* Desktop Title */}
-        <h3 className={`font-americana ${titleSize} ${titleColor} mb-8 leading-tight hidden lg:block`}>
+        <h3 className={`font-americana ${titleSize} ${titleColor} mb-4 leading-tight hidden lg:block`}>
           {desktopTitle.split('<br/>').map((line, index, array) => (
             <span key={index}>
               {line}
@@ -61,7 +63,7 @@ const CallToAction = ({
         )}
         <UnderlineLink
           href={buttonHref}
-          className="mt-0"
+          className="mb-10 font-basis text-[13.57px] md:text-[15px]"
           textColor={buttonColor}
           underlineColor={buttonColor.replace('text-', 'bg-')}
         >
@@ -71,7 +73,7 @@ const CallToAction = ({
       {optionalSubtitle && (
         <UnderlineLink
           href={buttonHref}
-          className="mb-[-4rem]"
+          className={`mb-[-4rem] font-basis ${optionalSubtitleSize}`}
           textColor={optionalSubtitleColor}
           underlineColor={optionalSubtitleColor.replace('text-', 'bg-')}
         >
