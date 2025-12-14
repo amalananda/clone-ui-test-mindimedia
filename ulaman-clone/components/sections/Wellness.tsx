@@ -29,17 +29,21 @@ const Wellness = () => {
         </h2>
 
         <p
-          className="sm:w-[331.58px] md:w-[366px] text-[12.1px] sm:text-[12.7px] md:text-[13.3px] text-[#343E35] leading-relaxed mb-[18px] mt-[18px] font-basis mx-auto"
-          style={{ whiteSpace: 'pre-line' }}
+          className="w-screen relative left-1/2 right-1/2 -mx-[50vw] text-[14.475px] sm:text-[12.7px] md:text-[13.3px] text-[#343E35] leading-relaxed mb-[18px] mt-[18px] font-basis px-4"
+          style={{
+            whiteSpace: 'pre-line',
+            wordBreak: 'keep-all'
+          }}
         >
-          At Ulaman we redefine luxury as an experience that not only <br /> pampers the senses
-          but also nurtures the soul. Nestled in <br /> pristine nature, our eco-luxury retreat
-          offers a sanctuary for <br />healing and transformation. With personalized programs
-          year-<br />round, enjoy dedicated attention and care, immersing yourself <br />in relaxation,
-          rejuvenation, or profound inner change through <br />meticulously curated activities
-          and treatments. <span className="italic">Your <br /> transformative journey begins here.</span>
+          At Ulaman we redefine luxury as an experience that not only <br className="hidden sm:block" />
+          pampers the senses but also nurtures the soul. Nestled in <br className="hidden sm:block" />
+          pristine nature, our eco-luxury retreat offers a sanctuary for <br className="hidden sm:block" />
+          healing and transformation. With personalized programs year-<br className="hidden sm:block" />
+          round, enjoy dedicated attention and care, immersing yourself <br className="hidden sm:block" />
+          in relaxation, rejuvenation, or profound inner change through <br className="hidden sm:block" />
+          meticulously curated activities and treatments. <span className="italic">Your <br className="hidden sm:block" />transformative journey begins here.</span>
         </p>
-        <UnderlineLink href="#learnmore" className="mt-5">LEARN MORE</UnderlineLink>
+        <UnderlineLink href="/retreats" className="mt-5 font-basis text-[0.8472rem] md:text-[0.9375rem]">LEARN MORE</UnderlineLink>
 
       </SplitImageReveal>
 
