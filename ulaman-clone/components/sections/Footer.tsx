@@ -1,6 +1,7 @@
 // components/sections/Footer.tsx
 'use client'
 import React, { useState } from 'react'
+import UnderlineLink from '@/components/ui/UnderlineLink'
 
 const Footer = () => {
   const [formData, setFormData] = useState({ name: '', email: '' })
@@ -57,14 +58,14 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-[#7A8B7F] text-white font-americana">
+    <footer className="bg-[#7A8B7F] ">
       <div className="max-w-7xl mx-auto pt-8 md:pt-12 pb-8 px-4 md:px-6 lg:px-8">
 
         {/* Coloumn Link & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-8 md:mb-12">
           {/* Get Notified */}
           <div>
-            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Get Notified On Our Offers</h3>
+            <h3 className="text-[1.36rem] md:text-[1.567rem] font-americana text-[#F4EFE8] mb-6 md:mb-8">Get Notified On Our Offers</h3>
             <div className="space-y-4 md:space-y-6">
               <div>
                 <input
@@ -88,7 +89,7 @@ const Footer = () => {
               </div>
               <button
                 onClick={handleSubmit}
-                className="text-white border-b border-white/40 pb-1 hover:border-white transition-colors text-xs md:text-sm tracking-wider"
+                className="text-[#F4EFE8]/40 border-b border-white/40 pb-1 hover:border-white font-basis transition-colors text-[13.57px] md:text-[15.65px] tracking-wider"
               >
                 SUBMIT
               </button>
@@ -97,18 +98,19 @@ const Footer = () => {
 
           {/* Explore Links */}
           <div>
-            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Explore</h3>
+            <h3 className="text-[1.1308rem] md:text-[1.265rem] text-[#F4EFE8] font-americana mb-6 md:mb-8">Explore</h3>
             <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>
                 <ul className="space-y-2 md:space-y-3">
                   {exploreLinks.column1.map((link, index) => (
                     <li key={index}>
-                      <a
+                      <UnderlineLink
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
+                        className="text-[#EFEBE2] hover:text-white font-basis text-[0.907rem] md:text-[1.01rem]"
+                        underlineColor="#7A8B7F"
                       >
                         {link.label}
-                      </a>
+                      </UnderlineLink>
                     </li>
                   ))}
                 </ul>
@@ -117,12 +119,13 @@ const Footer = () => {
                 <ul className="space-y-2 md:space-y-3">
                   {exploreLinks.column2.map((link, index) => (
                     <li key={index}>
-                      <a
+                      <UnderlineLink
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
+                        className="text-[#EFEBE2] hover:text-white font-basis text-[0.907rem] md:text-[1.01rem]"
+                        underlineColor="#7A8B7F"
                       >
                         {link.label}
-                      </a>
+                      </UnderlineLink>
                     </li>
                   ))}
                 </ul>
@@ -132,18 +135,19 @@ const Footer = () => {
 
           {/* Connect Links */}
           <div>
-            <h3 className="text-xl md:text-2xl font-serif mb-6 md:mb-8">Connect</h3>
+            <h3 className="text-[1.1308rem] md:text-[1.265rem] font-americana text-[#F4EFE8] mb-6 md:mb-8">Connect</h3>
             <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>
                 <ul className="space-y-2 md:space-y-3">
                   {connectLinks.column1.map((link, index) => (
                     <li key={index}>
-                      <a
+                      <UnderlineLink
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
+                        className="text-[#EFEBE2] hover:text-white font-basis text-[0.907rem] md:text-[1.01rem]"
+                        underlineColor="#7A8B7F"
                       >
                         {link.label}
-                      </a>
+                      </UnderlineLink>
                     </li>
                   ))}
                 </ul>
@@ -152,12 +156,13 @@ const Footer = () => {
                 <ul className="space-y-2 md:space-y-3">
                   {connectLinks.column2.map((link, index) => (
                     <li key={index}>
-                      <a
+                      <UnderlineLink
                         href={link.href}
-                        className="text-white/90 hover:text-white transition-colors text-xs md:text-sm"
+                        className="text-[#EFEBE2] hover:text-white font-basis text-[0.907rem] md:text-[1.01rem]"
+                        underlineColor="#7A8B7F"
                       >
                         {link.label}
-                      </a>
+                      </UnderlineLink>
                     </li>
                   ))}
                 </ul>
@@ -189,13 +194,33 @@ const Footer = () => {
         {/* Copyright & Links */}
         <div className="font-americana pt-6 w-full">
           <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4 text-xs md:text-sm text-white/70">
-            <div className="flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2 md:gap-y-4 justify-center md:justify-start text-center md:text-left">
-              <a href="#terms" className="hover:text-white transition-colors">Terms</a>
-              <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#bookings" className="hover:text-white transition-colors">Ulaman Bookings</a>
-              <span className="w-full md:w-auto">Kids under 6 are not advised.</span>
-              <span className="w-full md:w-auto">© 2024-2025 Two Moons Studio for ulamanbali.com. All Rights Reserved</span>
-              <span className="w-full md:w-auto">Made With ❤︎ By Two Suns Studio </span>
+            <div className="flex flex-wrap gap-x-3 md:gap-x-8 gap-y-2 md:gap-y-4 justify-start md:justify-start text-left md:text-left">
+              <UnderlineLink
+                href="#terms"
+                className="text-[#EFEBE2] hover:text-white font-basis text-[0.734rem] md:text-[0.824rem]"
+                underlineColor="#7A8B7F"
+              >
+                Terms
+              </UnderlineLink>
+              <UnderlineLink
+                href="#privacy"
+                className="text-[#EFEBE2] hover:text-white font-basis text-[0.734rem] md:text-[0.824rem]"
+                underlineColor="#7A8B7F"
+              >
+                Privacy
+              </UnderlineLink>
+              <div className="flex gap-x-3 md:gap-x-8">
+                <UnderlineLink
+                  href="#ulaman-bookings"
+                  className="text-[#EFEBE2] hover:text-white font-basis text-[0.734rem] md:text-[0.824rem]"
+                  underlineColor="#7A8B7F"
+                >
+                  Ulaman Bookings
+                </UnderlineLink>
+                <span className="text-[#EFEBE2] text-[0.734rem] md:text-[0.824rem] md:w-auto">Kids under 6 are not advised.</span>
+              </div>
+              <span className="w-full text-[#EFEBE2] text-[0.734rem] md:text-[0.824rem] md:w-auto">© 2024-2025 Two Moons Studio for ulamanbali.com. All Rights Reserved</span>
+              <span className="w-full text-[#EFEBE2] text-[0.734rem] md:text-[0.824rem] md:w-auto">Made With ❤︎ By Two Suns Studio </span>
             </div>
           </div>
         </div>

@@ -57,18 +57,19 @@ const RoomsPackages = () => {
     <>
       {/* TEXT SECTION */}
       <section
-        className="relative bg-[#EFEBE2] flex flex-col items-center justify-center text-center px-4"
-        style={{ minHeight: '100vh' }}
+        className="relative bg-[#EFEBE2] flex flex-col items-center justify-center text-center"
+        style={{ minHeight: '50vh' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 z-10">
-          <h1 className={`font-americana text-[#C69C4D] mb-6 sm:mb-8 leading-relaxed ${isDesktop ? 'text-[2.5rem]' : 'text-[1.5rem] sm:text-[1.875rem]'
+          <h1 className={`font-americana text-[#C69C4D] mb-2 sm:mb-4 leading-relaxed ${isDesktop ? 'text-[1.875rem]' : 'text-[1.5rem]'
             }`}>
             Experience a blend of nature, comfort and<br className="hidden sm:block" />
             luxury like never before.
           </h1>
-          <button className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 text-[#C69C4D] transition-all duration-300 tracking-wider text-xs sm:text-sm font-medium rounded-full shadow-lg hover:shadow-xl">
+          {/* Custom Link for this page */}
+          <UnderlineLink href="/about" className="mt-1 text-[0.9375rem] font-basis">
             BOOK YOUR STAY
-          </button>
+          </UnderlineLink>
         </div>
       </section>
 
@@ -76,8 +77,8 @@ const RoomsPackages = () => {
       <BeanieReveal
         image={SINGLE_HERO_IMAGE}
         alt="Luxury Villa View"
-        minHeight={700}
-        maxHeight={900}
+        minHeight={800}
+        maxHeight={1000}
         maxRadius={20000}
         id="beanie-image"
       />
@@ -86,7 +87,7 @@ const RoomsPackages = () => {
       <section className="py-12 sm:py-16 md:py-20 bg-[#EFEBE2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
-            <h2 className={`font-americana text-[#C69C4D] mb-4 leading-relaxed px-4 ${isDesktop ? 'text-[2.5rem]' : 'text-[1.5rem] sm:text-[1.875rem]'
+            <h2 className={`font-americana text-[#C69C4D] mb-4 px-4 ${isDesktop ? 'text-[1.875rem]' : 'text-[1.58rem] font-medium'
               }`}>
               Book one of our special<br />
               packages for a getaway you&apos;ll<br />
@@ -125,9 +126,9 @@ const RoomsPackages = () => {
                     key={pkg.id}
                     className="flex-none snap-start group relative overflow-hidden w-[311.21px] md:w-[343.65px] md:snap-center"
                   >
-                    <div className="relative overflow-hidden rounded-2xl">
+                    <div className="relative ">
                       {/* GAMBAR */}
-                      <div className="relative h-[329.88px] md:h-[364.27px] overflow-hidden">
+                      <div className="relative h-[329.88px] md:h-[364.27px] overflow-hidden rounded-lg">
                         <Image
                           src={pkg.image}
                           alt={pkg.name}
@@ -142,10 +143,10 @@ const RoomsPackages = () => {
                         <p className="text-xs mb-2 text-[#343E35] font-basis bg-[#EDE6D8] w-[111.44px] px-2 py-1">
                           {pkg.duration}
                         </p>
-                        <h3 className="text-[1.37rem] md:text-[1.58rem] font-americana mb-3 sm:mb-4 text-[#C69C4D]">
+                        <h3 className="text-[1.37rem] md:text-[1.625rem] font-americana mb-3 sm:mb-4 text-[#C69C4D]">
                           {pkg.name}
                         </h3>
-                        <UnderlineLink href="#discover" className="mt-4 sm:mt-5">DISCOVER</UnderlineLink>
+                        <UnderlineLink href="#discover" className="mt-4 sm:mt-5 text-[0.9375rem] font-basis">DISCOVER</UnderlineLink>
                       </div>
                     </div>
                   </div>

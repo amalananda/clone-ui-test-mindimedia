@@ -4,6 +4,7 @@
 import React from 'react'
 import GridImages from '@/components/ui/GridImages'
 import galleryData from '@/lib/data/gallery-images.json'
+import UnderlineLink from '@/components/ui/UnderlineLink'
 
 interface GalleryImage {
   id: number
@@ -37,17 +38,17 @@ const Gallery = ({
   const galleryImages = images || (galleryData[category] as GalleryImage[]) || []
 
   return (
-    <section id="gallery" className="py-12 md:py-24" style={{ backgroundColor }}>
-      <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+    <section id="gallery" className="py-8 sm:py-12 md:py-16 lg:py-24" style={{ backgroundColor }}>
+      <div className="max-w-[1600px] mx-auto px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8">
         {showTitle && (title || subtitle) && (
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
             {subtitle && (
-              <p className="text-[#c9a961] text-sm md:text-base mb-2 font-americana">
+              <p className="text-[#c9a961] text-xs sm:text-sm md:text-base mb-2 font-americana">
                 {subtitle}
               </p>
             )}
             {title && (
-              <h2 className="text-3xl md:text-5xl font-americana text-[#c9a961]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-americana text-[#c9a961]">
                 {title}
               </h2>
             )}
@@ -63,11 +64,52 @@ const Gallery = ({
             tablet: 3,
             desktop: 3
           }}
-          gap={16} // Gap dalam pixel
+          gap={8}
           showLightbox={true}
-          className="px-4 sm:px-6 lg:px-8"
+          className="gallery-grid-responsive"
         />
+
+        {/* Center aligned link */}
+        <div className="flex justify-center mt-8 sm:mt-10 md:mt-12">
+          <UnderlineLink href="#discover" className="text-[13.57px] md:text-[0.9375rem] font-basis">
+            DISCOVER ALL EXPERIENCES
+          </UnderlineLink>
+        </div>
       </div>
+
+      <style jsx>{`
+        :global(.gallery-grid-responsive) {
+          padding: 0;
+        }
+
+        /* Mobile: gap 8px */
+        @media (max-width: 639px) {
+          :global(.gallery-grid-responsive) {
+            gap: 8px !important;
+          }
+        }
+
+        /* Small tablets: gap 12px */
+        @media (min-width: 640px) and (max-width: 767px) {
+          :global(.gallery-grid-responsive) {
+            gap: 12px !important;
+          }
+        }
+
+        /* Tablets: gap 14px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          :global(.gallery-grid-responsive) {
+            gap: 14px !important;
+          }
+        }
+
+        /* Desktop: gap 16px */
+        @media (min-width: 1024px) {
+          :global(.gallery-grid-responsive) {
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

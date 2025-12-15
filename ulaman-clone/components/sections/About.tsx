@@ -98,19 +98,16 @@ const About = () => {
     }
 
   const titleText =
-    "An award-winning eco-luxury resort |BREAK|" +
-    "offering a unique hideaway experience. |BREAK|" +
-    "Embrace authenticity, balance, and |BREAK|" +
-    "harmony with nature in a healing, |BREAK|" +
-    "luxurious environment."
+    "An award-winning eco-luxury resort offering |BREAK|" +
+    "a unique hideaway experience. Embrace |BREAK|" +
+    "authenticity, balance, and harmony with |BREAK|" +
+    "nature in a healing, luxurious environment.|BREAK|"
 
   const bodyText =
-    "We believe nature and luxury can coexist. Ulaman |BREAK|" +
-    "Eco Luxury Resort offers a secluded, lush haven |BREAK|" +
-    "with luxurious amenities and impeccable service. |BREAK|" +
-    "Immerse yourself in traditional Balinese culture and |BREAK|" +
-    "leave feeling renewed, all while minimizing your |BREAK|" +
-    "ecological footprint. Recharge your mind, body, and |BREAK|" +
+    "We believe nature and luxury can coexist. Ulaman Eco Luxury Resort offers a |BREAK|" +
+    "secluded, lush haven with luxurious amenities and impeccable service. |BREAK|" +
+    "Immerse yourself in traditional Balinese culture and leave feeling renewed, all|BREAK|" +
+    "while minimizing your ecological footprint. Recharge your mind, body, and |BREAK|" +
     "soul in this unique holistic retreat."
   interface Slide {
     [key: string]: unknown // Add index signature
@@ -147,16 +144,16 @@ const About = () => {
       id="about"
       className="relative bg-[#EFEBE2] from-stone-950 to-stone-900 text-white overflow-hidden"
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
         {/* Text Reveal Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-20 items-center mb-16 md:mb-24">
           <div
             className="lg:col-span-2 flex justify-center"
             style={{
               animation: isVisible ? 'fadeInLeft 1s ease-out 0.3s both' : 'none'
             }}
           >
-            <div ref={textContainerRef} className="max-w-4xl mx-auto text-center">
+            <div ref={textContainerRef} className="max-w-4xl mx-auto text-center px-2 sm:px-4">
               <TextReveal
                 {...textRevealProps}
                 as="h1"
@@ -170,9 +167,9 @@ const About = () => {
         <ImageSlider
           slides={sliderData}
           renderContent={(slide) => (
-            <div className="ml-12">
+            <div className="w-full px-0 sm:px-4 md:px-6 lg:ml-12 lg:pr-8">
               {/* Title */}
-              <div className="font-americana text-[1.35rem] lg:text-[1.625rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out">
+              <div className="font-americana text-[1.125rem] sm:text-[1.25rem] lg:text-[1.5rem] leading-snug font-medium text-[#C69C4D] transition-opacity duration-500 ease-in-out">
                 {(slide as unknown as Slide).title.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
                   <React.Fragment key={index}>
                     {segment}
@@ -182,7 +179,7 @@ const About = () => {
               </div>
 
               {/* Body */}
-              <p className="mt-8 font-basis text-gray-400 text-lg leading-relaxed transition-opacity duration-500 ease-in-out">
+              <p className="mt-6 sm:mt-8 font-basis text-[#343E35]/70 text-sm sm:text-base leading-relaxed transition-opacity duration-500 ease-in-out">
                 {(slide as Slide).body.split('|BREAK|').map((segment: string, index: number, array: string[]) => (
                   <React.Fragment key={index}>
                     {segment}
@@ -192,7 +189,7 @@ const About = () => {
               </p>
 
               {/* Custom Link for this page */}
-              <UnderlineLink href="/about" className="mt-5">
+              <UnderlineLink href="/about" className="mt-5 sm:mt-6 font-basis inline-block">
                 ABOUT US
               </UnderlineLink>
             </div>

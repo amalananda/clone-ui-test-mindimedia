@@ -28,6 +28,7 @@ interface GridImagesProps {
   columnWidth?: number
   showLightbox?: boolean
   className?: string
+  mobileHeightScale?: number // Multiplier untuk height di mobile (default 0.7)
 }
 
 const GridImages = ({
@@ -42,14 +43,15 @@ const GridImages = ({
   gap = 16,
   columnWidth = 347.44,
   showLightbox = true,
-  className = ''
+  className = '',
 }: GridImagesProps) => {
   const [selectedImage, setSelectedImage] = useState<GridImage | null>(null)
   const [currentImageIndexes, setCurrentImageIndexes] = useState<{ [key: number]: number }>({})
   const [columnCount, setColumnCount] = useState(columns.mobile)
   const [actualColumnWidth, setActualColumnWidth] = useState(columnWidth)
   const [zoomLevel, setZoomLevel] = useState(1)
-  const [isMounted, setIsMounted] = useState(false)
+  const [, setIsMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
   const currentRotatingIndexRef = useRef(0)
@@ -57,18 +59,23 @@ const GridImages = ({
   // Mount detection untuk menghindari hydration error
   useEffect(() => {
     setIsMounted(true)
+    setIsMobile(window.innerWidth < 768)
   }, [])
 
   // Responsive columns and calculate actual column width
   useEffect(() => {
     const updateColumns = () => {
       let cols = columns.mobile
-      if (window.innerWidth >= 1024) {
+      const windowWidth = window.innerWidth
+
+      if (windowWidth >= 1024) {
         cols = columns.desktop
-      } else if (window.innerWidth >= 768) {
+      } else if (windowWidth >= 768) {
         cols = columns.tablet
       }
+
       setColumnCount(cols)
+      setIsMobile(windowWidth < 768)
 
       // Calculate actual column width based on container
       if (containerRef.current) {
@@ -180,16 +187,82 @@ const GridImages = ({
       return cols
     }
 
-    // Simply distribute in order, filling columns from left to right
-    images.forEach((image, index) => {
-      const colIndex = index % columnCount
-      cols[colIndex].push(image)
-    })
+    // Mobile view: Custom ordering untuk 2 columns
+    // Pattern: [1, 4, 2], [3, 5, 6]
+    // Kolom kiri: index 0, 3, 4 (gambar 1, 4, 5)
+    // Kolom kanan: index 1, 2, 5 (gambar 2, 3, 6)
+    if (isMobile && columnCount === 2) {
+      const leftColumn = [0, 3, 2]   // Index untuk gambar 1, 4, 5
+      const rightColumn = [1, 4, 5]  // Index untuk gambar 2, 3, 6
+
+      // Distribute ke kolom kiri
+      leftColumn.forEach(index => {
+        if (index < images.length) {
+          cols[0].push(images[index])
+        }
+      })
+
+      // Distribute ke kolom kanan
+      rightColumn.forEach(index => {
+        if (index < images.length) {
+          cols[1].push(images[index])
+        }
+      })
+
+      // Untuk gambar ke-7 dan seterusnya, distribusi normal
+      for (let i = 6;i < images.length;i++) {
+        const colIndex = (i - 6) % columnCount
+        cols[colIndex].push(images[i])
+      }
+    }
+    // Desktop view: Normal distribution (left to right)
+    else {
+      images.forEach((image, index) => {
+        const colIndex = index % columnCount
+        cols[colIndex].push(image)
+      })
+    }
 
     return cols
   }
 
   const columns_array = distributeImages()
+
+  // Calculate image height based on screen size
+  const calculateImageHeight = (image: GridImage): number => {
+    const currentSize = isMobile && image.mobileSize ? image.mobileSize : image.size
+    let desktopHeight = image.height || 250
+    let mobileHeight = image.height || 250
+
+    // Heights untuk desktop dan mobile
+    switch (currentSize) {
+      case 'small':
+        desktopHeight = 300
+        mobileHeight = 170
+        break
+      case 'medium':
+        desktopHeight = 317
+        mobileHeight = 200
+        break
+      case 'tall':
+        desktopHeight = 417
+        mobileHeight = 230
+        break
+      case 'extra-tall':
+        desktopHeight = 434
+        mobileHeight = 290
+        break
+      case 'super-tall':
+        desktopHeight = 600
+        mobileHeight = 380
+        break
+      default:
+        desktopHeight = image.height || 250
+        mobileHeight = image.height ? Math.round(image.height * 0.65) : 160
+    }
+
+    return isMobile ? mobileHeight : desktopHeight
+  }
 
   return (
     <>
@@ -208,30 +281,7 @@ const GridImages = ({
             }}
           >
             {column.map((image, imageIndex) => {
-              // Gunakan isMounted untuk menghindari hydration error
-              const isMobile = isMounted && window.innerWidth < 768
-              const currentSize = isMobile && image.mobileSize ? image.mobileSize : image.size
-              let imageHeight = image.height || 250
-
-              switch (currentSize) {
-                case 'small':
-                  imageHeight = 300
-                  break
-                case 'medium':
-                  imageHeight = 317
-                  break
-                case 'tall':
-                  imageHeight = 417
-                  break
-                case 'extra-tall':
-                  imageHeight = 434
-                  break
-                case 'super-tall':
-                  imageHeight = 600
-                  break
-                default:
-                  imageHeight = image.height || 250
-              }
+              const imageHeight = calculateImageHeight(image)
 
               return (
                 <div
