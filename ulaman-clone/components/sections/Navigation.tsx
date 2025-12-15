@@ -123,19 +123,19 @@ const LocationMap = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-white">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-4 md:mb-6 leading-tight">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left Content - order-2 on mobile (appears second), order-1 on desktop (appears first) */}
+          <div className="text-[#F4EFE8] order-2 lg:order-1">
+            <h2 className="text-[25.3313px] md:text-4xl lg:text-5xl font-americana mb-4 md:mb-6">
               Tucked Within Majestic<br />Balinese Nature.
             </h2>
-            <p className="text-white/80 text-base md:text-lg leading-relaxed">
+            <p className="text-[#EFEBE2] text-[11.76px] md:text-lg font-basis leading-relaxed">
               Strategically located near popular areas like Canggu and Ubud, experience tranquil nature and luxury. With endless activities, you&apos;ll never want to leave Ulaman.
             </p>
           </div>
 
-          {/* Map Section */}
-          <div className="relative">
+          {/* Map Section - order-1 on mobile (appears first), order-2 on desktop (appears second) */}
+          <div className="relative order-1 lg:order-2 w-full">
             <div className="relative w-full aspect-[4/3] bg-[#5A6B5F] rounded-lg overflow-hidden">
               {/* Map Background with Roads */}
               <svg
@@ -187,11 +187,11 @@ const LocationMap = () => {
                 </div>
               </div>
 
-              {/* Location Markers */}
+              {/* Location Markers - visible on both mobile and desktop */}
               {locations.map((location, index) => (
                 <div
                   key={index}
-                  className="absolute hidden md:block"
+                  className="absolute"
                   style={{
                     top: location.top,
                     bottom: location.bottom,
@@ -200,58 +200,22 @@ const LocationMap = () => {
                   }}
                 >
                   <div className="relative group">
-                    <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 whitespace-nowrap">
+                    {/* Badge with distance */}
+                    <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-2 md:px-3 py-1 md:py-2 rounded-lg shadow-lg flex items-center gap-1 md:gap-2 whitespace-nowrap">
                       {location.isAirport ? (
-                        <Plane size={14} className="text-white" />
+                        <Plane size={12} className="text-white md:w-[14px] md:h-[14px]" />
                       ) : (
-                        <Car size={14} className="text-white" />
+                        <Car size={12} className="text-white md:w-[14px] md:h-[14px]" />
                       )}
-                      <span className="text-white text-xs">{location.distance}</span>
+                      <span className="text-white text-[10px] md:text-xs">{location.distance}</span>
                     </div>
-                    <div className="absolute -bottom-6 left-0 text-white text-xs opacity-90">
+                    {/* Location name below badge */}
+                    <div className="absolute -bottom-5 md:-bottom-6 left-0 text-white text-[9px] md:text-xs opacity-90">
                       {location.name}
                     </div>
-                    <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+                    {/* Dot marker */}
+                    <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
                   </div>
-                </div>
-              ))}
-
-              {/* Airport location with plane icon */}
-              <div className="absolute bottom-[18%] right-[12%] hidden md:block">
-                <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg flex items-center gap-2">
-                  <Plane size={14} className="text-white" />
-                  <span className="text-white text-xs">15 min</span>
-                </div>
-              </div>
-
-              {/* Uluwatu dropdown indicator */}
-              <div className="absolute bottom-[20%] left-[15%] hidden md:block">
-                <div className="bg-[#2A3B2F]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 cursor-pointer hover:bg-[#3A4B3F]/90 transition-colors">
-                  <Car size={14} className="text-white" />
-                  <span className="text-white text-xs">2 hours</span>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="white" className="ml-1">
-                    <path d="M 3,5 L 6,8 L 9,5" stroke="white" strokeWidth="1.5" fill="none" />
-                  </svg>
-                </div>
-                <div className="absolute -bottom-6 left-0 text-white text-xs opacity-90">
-                  Uluwatu Temple
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile Location List */}
-            <div className="md:hidden mt-6 space-y-3">
-              {locations.map((location, index) => (
-                <div key={index} className="flex items-center justify-between bg-[#5A6B5F]/50 backdrop-blur-sm px-4 py-3 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    {location.isAirport ? (
-                      <Plane size={16} className="text-white" />
-                    ) : (
-                      <Car size={16} className="text-white" />
-                    )}
-                    <span className="text-white text-sm">{location.name}</span>
-                  </div>
-                  <span className="text-white/80 text-xs">{location.distance}</span>
                 </div>
               ))}
             </div>
