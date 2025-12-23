@@ -26,7 +26,8 @@ const Hero = ({
     showLogoAnim,
     showButton,
     showBg,
-    scrollToSection
+    scrollToSection,
+    pathname
   } = useHero()
 
   const handleButtonClick = () => {
@@ -52,6 +53,8 @@ const Hero = ({
         rightButton={rightButton}
         scrollToSection={scrollToSection}
         handleButtonClick={handleButtonClick}
+        scrolled={scrolled}
+        currentPath={pathname}
       />
 
       {/* Navigation */}
