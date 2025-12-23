@@ -1,6 +1,6 @@
 // lib/use-hero.ts
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { ANIMATION_TIMINGS } from './hero-constants'
 
 export const useHero = () => {
@@ -15,6 +15,7 @@ export const useHero = () => {
   const [showButton, setShowButton] = useState(false)
   const [showBg, setShowBg] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowBg(true), ANIMATION_TIMINGS.showBg)
@@ -68,6 +69,7 @@ export const useHero = () => {
     showLogoAnim,
     showButton,
     showBg,
-    scrollToSection
+    scrollToSection,
+    pathname
   }
 }
