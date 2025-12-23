@@ -61,7 +61,7 @@ export const FullMenuOverlay = ({
     >
       <div className="h-full flex flex-col">
         {/* Header with close button */}
-        <div className={`mt-4${scrolled ? 'border-b border-[#C69C4D]/30' : ''}`}>
+        <div className={`md:mt-4${scrolled ? 'border-b border-[#C69C4D]/30' : ''}`}>
           <div className="max-w-7xl mx-auto py-6 md:py-5">
             <div className="relative flex justify-between items-center px-4 md:px-8">
               <button
